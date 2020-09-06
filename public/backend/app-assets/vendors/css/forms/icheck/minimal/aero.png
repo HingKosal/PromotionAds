@@ -1,0 +1,11 @@
+.label                           = "Enabled"
+EsxHostAdvSettings.Virsto.Enabled.summary                         = "Use Virsto format for new disks"
+EsxHostAdvSettings.Virsto.DiskFormatVersion.label                 = "Virsto Disk Format version"
+EsxHostAdvSettings.Virsto.DiskFormatVersion.summary               = "Virsto Disk Format version"
+EsxHostAdvSettings.Virsto.GweFetchExtentsFactor.label             = "Control GWE on-disk extents fetching"
+EsxHostAdvSettings.Virsto.GweFetchExtentsFactor.summary           = "Multiplier controlling how many on-disk extents fetched based on GWE request size"
+EsxHostAdvSettings.Virsto.InstanceHeapLimit.label                 = "Instance heap limit"
+EsxHostAdvSettings.Virsto.InstanceHeapLimit.summary               = "Heap limit for each Virsto instance (disk) in MB"
+EsxHostAdvSettings.Virsto.MaxMFRetryCount.label                   = "Virsto MF retry count"
+EsxHostAdvSettings.Virsto.MaxMFRetryCount.summary                 = "How many times Virsto metadata flusher retries in case of a transient error."
+EsxHostAdvSettings.Virsto.MsecBeforeMetaFlush.label               = "Msec before metadata flu

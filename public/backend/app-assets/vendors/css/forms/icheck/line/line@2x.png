@@ -1,0 +1,10 @@
+VM.label                  = "DemandLogIOPerVM"
+EsxHostAdvSettings.HBR.HbrDemandLogIOPerVM.summary                = "Number of concurrent demand log copies per VM"
+EsxHostAdvSettings.HBR.HbrMaxDiskLen.label                        = "HbrMaxDiskLen"
+EsxHostAdvSettings.HBR.HbrMaxDiskLen.summary                      = "Maximum number of gigabytes per disk that can be supported."
+EsxHostAdvSettings.HBR.HbrMaxUnmapExtents.label                   = "HbrMaxUnmapExtents"
+EsxHostAdvSettings.HBR.HbrMaxUnmapExtents.summary                 = "Maximum expected number of extents for SCSI UNMAP commands."
+EsxHostAdvSettings.HBR.HbrMaxUnmapsInFlight.label                 = "HbrMaxUnmapsInFlight"
+EsxHostAdvSettings.HBR.HbrMaxUnmapsInFlight.summary               = "Maximum expected number of SCSI UNMAP commands in flight on a single disk."
+EsxHostAdvSettings.HBR.HbrResourceHeapPerVMSizeKB.label           = "ResourceHeapPerVMSizeKB"
+EsxHostAdvSettings.HBR.HbrResourceHeapPerVMSizeKB.summary         = "The additional amount of memory in KB per VM to add to the resource h

@@ -1,0 +1,13 @@
+.enableACSCheckForRP.label               = "VMkernel.Boot.enableACSCheckForRP"
+EsxHostAdvSettings.VMkernel.Boot.enableACSCheckForRP.summary             = "Enable ACS capability checks for Root Port"
+EsxHostAdvSettings.VMkernel.Boot.execInstalledOnly.label                 = "VMkernel.Boot.execInstalledOnly"
+EsxHostAdvSettings.VMkernel.Boot.execInstalledOnly.summary               = "Execute only those files that have been installed via a vib package and have not been modified."
+EsxHostAdvSettings.VMkernel.Boot.fsCheck.label                           = "VMkernel.Boot.fsCheck"
+EsxHostAdvSettings.VMkernel.Boot.fsCheck.summary                         = "Run filesystem checks on system partitions."
+EsxHostAdvSettings.VMkernel.Boot.gdbPort.label                           = "VMkernel.Boot.gdbPort"
+EsxHostAdvSettings.VMkernel.Boot.gdbPort.summary                         = "gdb port; com1 or com2"
+EsxHostAdvSettings.VMkernel.Boot.generalCriticalMemory.label             = "VMkernel.Boot.generalCriticalMemory"
+EsxHostAdvSettings.VMkernel.Boot.generalCriticalMemory.summary           = "Pages to reserve as general critical memory"
+EsxHostAdvSettings.VMkernel.Boot.heapCheckTimerInterval.label            = "VMkernel.Boot.heapCheckTimerInterval"
+EsxHostAdvSettings.VMkernel.Boot.heapCheckTimerInterval.summary          = "Interval in seconds between heap timer checks"
+EsxHostAdvSettings.VMkernel

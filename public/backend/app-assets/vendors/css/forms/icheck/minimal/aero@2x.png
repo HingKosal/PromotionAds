@@ -1,0 +1,12 @@
+iskActions.summary                = "Use synchronous I/O mode for journaled disk actions"
+EsxHostAdvSettings.VMFS3.EnableEagerEviction.label                = "Eagerly evict cached clusters"
+EsxHostAdvSettings.VMFS3.EnableEagerEviction.summary              = "Eagerly evict cached clusters upon reaching ClusterEvictThreshold"
+EsxHostAdvSettings.VMFS3.FailVolumeOpenIfAPD.label                = "FailVolumeOpenIfAPD"
+EsxHostAdvSettings.VMFS3.FailVolumeOpenIfAPD.summary              = "Fail VMFS volume open operation if the underlying device is deemed to be under an all-paths-down condition"
+EsxHostAdvSettings.VMFS3.FS3DentryCacheEnable.label               = "Enable name cache"
+EsxHostAdvSettings.VMFS3.FS3DentryCacheEnable.summary             = "Enable name cache for VMFS-3"
+EsxHostAdvSettings.VMFS3.HardwareAcceleratedLocking.label         = "HardwareAcceleratedLocking"
+EsxHostAdvSettings.VMFS3.HardwareAcceleratedLocking.summary       = "Enable hardware accelerated VMFS locking (requires compliant hardware). Please see http://kb.vmware.com/kb/2094604 before disabling this option"
+EsxHostAdvSettings.VMFS3.HBRenewalRetries.label                   = "Heartbeat retry threshold"
+EsxHostAdvSettings.VMFS3.HBRenewalRetries.summary                 = "Maximum number of renewing failed heartbeat before next scheduled iteration"
+EsxHostAdvSettings.VMFS3.LookupRetries.label                     

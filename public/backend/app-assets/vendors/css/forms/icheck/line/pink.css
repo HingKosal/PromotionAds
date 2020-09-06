@@ -1,0 +1,20 @@
+              = "Disks with capacity under this number of gigabytes will have the min extent size."
+EsxHostAdvSettings.HBR.HbrMinExtentSizeKB.label                   = "HbrMinExtentSizeKB"
+EsxHostAdvSettings.HBR.HbrMinExtentSizeKB.summary                 = "Minimum extent size used for disks in kilobytes."
+EsxHostAdvSettings.HBR.HbrLowerExtentBreakGB.label                = "HbrLowerExtentBreakTB"
+EsxHostAdvSettings.HBR.HbrLowerExtentBreakGB.summary              = "Disks with capacity between the min extent break and this number of gigabytes will have the lower extent size."
+EsxHostAdvSettings.HBR.HbrLowerExtentSizeKB.label                 = "HbrLowerExtentSizeKB"
+EsxHostAdvSettings.HBR.HbrLowerExtentSizeKB.summary               = "Lower extent size used for disks in kilobytes."
+EsxHostAdvSettings.HBR.HbrUpperExtentBreakGB.label                = "HbrUpperExtentBreakTB"
+EsxHostAdvSettings.HBR.HbrUpperExtentBreakGB.summary              = "Disks with capacity between the lower extent break and this number of gigabytes will have the upper extent size."
+EsxHostAdvSettings.HBR.HbrUpperExtentSizeKB.label                 = "HbrUpperExtentSizeKB"
+EsxHostAdvSettings.HBR.HbrUpperExtentSizeKB.summary               = "Upper extent size used for disks in kilobytes."
+EsxHostAdvSettings.HBR.HbrMaxExtentSizeKB.label                   = "HbrMaxExtentSizeKB"
+EsxHostAdvSettings.HBR.HbrMaxExtentSizeKB.summary                 = "Maximum extent size in kilobytes. Used for disks with capacity over the upper extent break."
+EsxHostAdvSettings.HBR.HbrDisableNetCompression.label             = "HbrDisableNetCompression"
+EsxHostAdvSettings.HBR.HbrDisableNetCompression.summary           = "Disable end-to-end network compression."
+EsxHostAdvSettings.HBR.HbrMaxGuestXferWhileDeltaMB.label          = "HbrMaxGuestXferWhileDeltaMB"
+EsxHostAdvSettings.HBR.HbrMaxGuestXferWhileDeltaMB.summary        = "Maximum single SCSI command transfer size (in megabytes) that will be tolerated while a delta is taking place."
+
+###
+EsxHostAdvSettings.Irq.BestVcpuRouting.label                      = "Best virtual CPU routing

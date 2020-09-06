@@ -1,0 +1,68 @@
+.container .content .main .text-success{
+  border-bottom: 1px solid gray;
+  width: 15%;
+  margin: 50px;
+}
+.container .content .main p{
+  font-style: italic;
+  margin-left: 100px;
+}
+hr{
+  background-color: red;
+}
+.container .content .contact{
+  margin-top: 70px;
+  margin-left: 200px;
+}
+.container .content .contact button{
+  margin: 20px 150px;
+  border-radius: 2px;
+}
+.container .content .contact .social-icon{
+  margin: 20px 150px;
+}
+.fa {
+  padding: 20px;
+  font-size: 25px;
+  width: 65px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.error{
+  color: red;
+  margin: 0px 300px;
+}
+.success{
+  color: green;
+}
+.message .text-success{
+  margin: 50px;
+  text-align: center;
+}
+.message .form-control, .message textarea, .message button{
+  margin: 0px 300px;
+  width: 50%;
+}
+.message label{
+  margin: 0px 200px;
+}

@@ -1,0 +1,11 @@
+.Boot.bcNumPools"
+EsxHostAdvSettings.VMkernel.Boot.bcNumPools.summary                      = "Number of buffer cache pools"
+EsxHostAdvSettings.VMkernel.Boot.bootDeviceRescanTimeout.label           = "VMkernel.Boot.bootDeviceRescanTimeout"
+EsxHostAdvSettings.VMkernel.Boot.bootDeviceRescanTimeout.summary         = "Boot device rescan timeout (in minutes)."
+EsxHostAdvSettings.VMkernel.Boot.busSpeedMayVary.label                   = "VMkernel.Boot.busSpeedMayVary"
+EsxHostAdvSettings.VMkernel.Boot.busSpeedMayVary.summary                 = "Allow different APIC timer speeds on different CPUs."
+EsxHostAdvSettings.VMkernel.Boot.cacheFlushImmOnAllHalt.label            = "VMkernel.Boot.cacheFlushImmOnAllHalt"
+EsxHostAdvSettings.VMkernel.Boot.cacheFlushImmOnAllHalt.summary          = "Flush caches immediately if all cores sharing LLC halt (AMD only)"
+EsxHostAdvSettings.VMkernel.Boot.checkCPUIDLimit.label                   = "VMkernel.Boot.checkCPUIDLimit"
+EsxHostAdvSettings.VMkernel.Boot.checkCPUIDLimit.summary                 = "Refuse to run on CPUID limited cpus."
+EsxHostAdvSettings.VMkernel.Boot.checkPages.label 

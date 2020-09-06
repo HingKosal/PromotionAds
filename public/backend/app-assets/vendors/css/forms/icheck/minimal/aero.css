@@ -1,0 +1,12 @@
+wnloading VIBs (0=no limit)"
+EsxHostAdvSettings.UserVars.EsximageNetRetries.label                          = "EsximageNetRetries"
+EsxHostAdvSettings.UserVars.EsximageNetRetries.summary                        = "Set the number of times to retry in case of failure while downloading VIBs"
+EsxHostAdvSettings.UserVars.EsximageNetTimeout.label                          = "EsximageNetTimeout"
+EsxHostAdvSettings.UserVars.EsximageNetTimeout.summary                        = "Set the timeout in seconds for downloading VIBs (0=no timeout)"
+EsxHostAdvSettings.UserVars.ESXiShellTimeOut.label                            = "ESXiShellTimeOut"
+EsxHostAdvSettings.UserVars.ESXiShellTimeOut.summary                          = "Time before automatically disabling local and remote shell access (in seconds, 0 disables).  Takes effect after the services are restarted."
+EsxHostAdvSettings.UserVars.ESXiShellInteractiveTimeOut.label                 = "ESXiShellInteractiveTimeOut"
+EsxHostAdvSettings.UserVars.ESXiShellInteractiveTimeOut.summary               = "Idle time before an interactive shell is automatically logged out (in seconds, 0 disables).  Takes effect only for newly logged in sessions."
+EsxHostAdvSettings.UserVars.ProductLockerLocation.label                       = "ProductLockerLocation"
+EsxHostAdvSettings.UserVars.ProductLockerLocation.summary                     = "Path to VMware Tools and vSphere Client repository"
+EsxHostAdvSettings.UserVars.PXEBootEnabled.label                              = "PXEBootEnabl
