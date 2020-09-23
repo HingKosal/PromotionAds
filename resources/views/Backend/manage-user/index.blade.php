@@ -27,8 +27,6 @@
                                                         <th>Last Name</th>
                                                         <th>Username</th>
                                                         <th>E-mail</th>
-                                                        <th style="width: 50%">Password</th>
-                                                        <th>Password Confirmation</th>
                                                         <th>Action</th>
                                                     </tr>
                                                     </thead>
@@ -40,8 +38,6 @@
                                                             <td>{{$u->last_name}}</td>
                                                             <td>{{$u->username}}</td>
                                                             <td>{{$u->email}}</td>
-                                                            <td>{{$u->password}}</td>
-                                                            <td>{{$u->password_confirmation}}</td>
                                                             <td>
                                                                 <a class="btn btn-primary btn-sm" href="{{route('edit',$u->id)}}" role="button">edit</a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" href="{{route('delete',$u->id)}}" role="button">delete</a>
@@ -50,6 +46,7 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                {{ $user->links() }}
                                             </div>
                                         </div>
                                     </div>
