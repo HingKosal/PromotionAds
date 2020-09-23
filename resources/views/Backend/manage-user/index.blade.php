@@ -10,28 +10,44 @@
                                 <div class="card-body card-dashboard">
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                                         <div class="row" style="display: flex;justify-content: space-between;margin: 10px 0">
-                                            <div>
-                                                <a href="{{route('user.create')}}" type="button" class="btn btn-primary"> Add New </a>
-                                            </div>
+{{--                                            <div>--}}
+{{--                                                <a href="{{route('user.create')}}" type="button" class="btn btn-primary"> Add New </a>--}}
+{{--                                            </div>--}}
                                             <div style="display: flex">
                                                 <label>Search:</label><input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_0">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <table class="table table-striped table-bordered dom-jQuery-events dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                                <table class="table table-striped table-bordered dom-jQuery-events dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" >
                                                     <thead>
-                                                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 158.6px;">Name</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 248.2px;">Position</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 119.4px;">Office</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 45px;">Age</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 101.8px;">Start date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 98px;">Salary</th></tr>
+                                                    <tr style="width: 100%">
+                                                        <th>#</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Username</th>
+                                                        <th>E-mail</th>
+                                                        <th style="width: 50%">Password</th>
+                                                        <th>Password Confirmation</th>
+                                                        <th>Action</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">Airi Satou</td>
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                        <td>33</td>
-                                                        <td>2008/11/28</td>
-                                                        <td>$162,700</td>
-                                                    </tr>
+                                                    @foreach($user as $u)
+                                                        <tr>
+                                                            <td>{{$u->id}}</td>
+                                                            <td>{{$u->first_name}}</td>
+                                                            <td>{{$u->last_name}}</td>
+                                                            <td>{{$u->username}}</td>
+                                                            <td>{{$u->email}}</td>
+                                                            <td>{{$u->password}}</td>
+                                                            <td>{{$u->password_confirmation}}</td>
+                                                            <td>
+                                                                <a class="btn btn-primary btn-sm" href="{{route('edit',$u->id)}}" role="button">edit</a>
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" href="{{route('delete',$u->id)}}" role="button">delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\users;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\Console\Input\Input;
 
-class UsersController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        return view('Backend/manage-user/index');
-        $user = users::paginate(5);
-        return view('Backend/manage-user/index',compact('user'));
+        return view('auth/login');
     }
 
     /**
@@ -26,7 +30,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('Backend/manage-user/create');
+        return view('auth.login');
     }
 
     /**
@@ -37,7 +41,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $email = DB::table('users')->where('email');
+        $password = DB::table('users')->where('password');
+        if (Auth::attempt(['email'=>$email, 'password'=> \hash($password)])){
+            return Redirect()->route('dashboard');
+        }
     }
 
     /**

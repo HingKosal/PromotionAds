@@ -27,7 +27,7 @@
                 </div>
             </li>
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
-                <a href="../../Backend/templates/register.php" class="btn btn-outline-warning btn-rounded waves-effect waves-light" style="margin: 15px">Free Ads Post</a>
+                <a href="{{route('login')}}" class="btn btn-outline-warning btn-rounded waves-effect waves-light" style="margin: 15px">Free Ads Post</a>
             </li>
         </ul>
 

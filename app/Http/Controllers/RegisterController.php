@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +15,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        return view('Backend/manage-user/index');
-        $user = users::paginate(5);
-        return view('Backend/manage-user/index',compact('user'));
+        return view('auth.register');
+//        $users = users::paginate(5);
+//        return view('auth.register',compact('users'));
+//        $user = users::all();
+//        return view('auth.register');
     }
 
+    public function dashboard()
+    {
+        return view('Backend.Dashboard.dashboard1');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +33,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('Backend/manage-user/create');
+        return view('auth.register');
     }
 
     /**
@@ -37,7 +44,25 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'fname' => 'required',
+            'lname' => 'required',
+            'username' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required',
+            'password_confirmation' => 'required'
+        ]);
+        $user = new users([
+            //        dd($user);
+            'first_name' => $request->get('fname'),
+            'last_name' => $request->get('lname'),
+            'username' => $request->get('username'),
+            'email' => $request->get('email'),
+            'password' =>Hash::make('password'),
+            'password_confirmation' =>Hash::make('password_confirmation')
+        ]);
+        $user->save();
+        return redirect()->route('dashboard');
     }
 
     /**
