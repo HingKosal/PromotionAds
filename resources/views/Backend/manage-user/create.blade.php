@@ -45,6 +45,9 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Password :</label>
                                         <div class="col-md-5">
+                                            @error('password')
+                                                <div class="alert alert-danger">Password must be at least 8 characters </div>
+                                            @enderror
                                             <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="{{old('password')}}" placeholder=" Enter Password..." name="password">
                                         </div>
                                     </div>

@@ -5,33 +5,38 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Add New Category</h2>
+                        <h2>Add New User</h2>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     </div>
                     <div class="card-content collpase show">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="createcategory.php" novalidate method="post">
+                            <form method="GET" action="{{route('user.update',$users->id)}}">
+                                @csrf
                                 <div class="form-body">
-                                    <!--                                <h4 class="form-section"><i class="ft-user"></i> Personal Info</h4>-->
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Category ID: </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">First Name : </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder="category id" name="category_id">
-
+                                            <input type="text" class="form-control @error('fname') is-invalid @enderror" value="{{$users->first_name}}" placeholder="Enter First Name..." name="fname">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Title: </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Last Name : </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" title" name="title">
+                                            <input type="text" class="form-control @error('lname') is-invalid @enderror" value="{{$users->last_name}}" placeholder=" Enter Last Name..." name="lname">
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Description</label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Username :</label>
                                         <div class="col-md-5">
-                                            <textarea name="description" id="projectinput1" cols="70" rows="4"></textarea>
+                                            <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{$users->username}}" placeholder=" Enter Username..." name="username">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">E-mail :</label>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{$users->email}}" placeholder=" Enter E-mail..." name="email">
                                         </div>
                                     </div>
                                 </div>

@@ -15,7 +15,6 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        return view('Backend/manage-user/index');
         $user = users::paginate(5);
         return view('Backend/manage-user/index',compact('user'));
     }
@@ -43,7 +42,7 @@ class UsersController extends Controller
             'lname' => 'required',
             'username' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'password_confirmation' => 'required'
         ]);
         $user = new users([
@@ -77,7 +76,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = users::find($id);
+        return view('Backend.manage-user.edit',compact('users'));
     }
 
     /**
@@ -89,7 +89,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'fname' => 'required',
+            'lname' => 'required',
+            'username' => 'required',
+            'email' => 'required'
+        ]);
+        $user = users::find($id);
+        //        dd($user);
+        $user->first_name = $request->fname;
+        $user->last_name = $request->lname;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->save();
+        return redirect()->route('user');
     }
 
     /**
@@ -100,6 +113,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        users::find($id)->delete();
+        return redirect()->route('user');
     }
 }
