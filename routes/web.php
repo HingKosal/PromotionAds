@@ -58,6 +58,7 @@ Route::get('/product/create', 'ProductsController@create')->name('product.create
 // user
 Route::get('/user', 'UsersController@index')->name('user');
 Route::get('/user/create', 'UsersController@create')->name('user.create');
+Route::post('/user/create', 'UsersController@store')->name('user.store');
 Route::get('/user/edit{id}','UsersController@edit')->name('edit');
 Route::get('/user/update{id}','UsersController@update')->name('update');
 Route::get('/user/delete{id}','UsersController@destroy')->name('delete');

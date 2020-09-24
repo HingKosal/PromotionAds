@@ -109,7 +109,7 @@
                                 </fieldset>
                                 <fieldset class="form-group position-relative has-icon-left">
                                     @error('email')
-                                    <div class="alert alert-danger">email already exist</div>
+                                    <div class="alert alert-danger">email must be unique</div>
                                     @enderror
                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" placeholder="Email Address" tabindex="4">
                                     <div class="form-control-position">
@@ -129,7 +129,7 @@
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" value="{{old('password_confirmation')}}" placeholder="Confirm Password" tabindex="6">
+                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirm Password" tabindex="6">
                                             <div class="form-control-position">
                                                 <i class="la la-key"></i>
                                             </div>

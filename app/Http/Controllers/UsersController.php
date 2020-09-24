@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -37,7 +38,24 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'fname' => 'required',
+            'lname' => 'required',
+            'username' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required',
+            'password_confirmation' => 'required'
+        ]);
+        $user = new users([
+            'first_name' => $request->get('fname'),
+            'last_name' => $request->get('lname'),
+            'username' => $request->get('username'),
+            'email' => $request->get('email'),
+            'password' =>Hash::make('password'),
+            'password_confirmation' =>Hash::make('password_confirmation')
+        ]);
+        $user->save();
+        return redirect()->route('user');
     }
 
     /**

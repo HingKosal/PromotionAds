@@ -30,7 +30,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+//        return view('auth.login');
     }
 
     /**
@@ -41,16 +41,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-
-        $email = DB::table('users')->where('email');
-        $password = DB::table('users')->where('password');
-        if (Auth::attempt(['email'=>$email, 'password'=> \hash($password)])){
-            return Redirect()->route('dashboard');
-        }
+        return Redirect()->route('dashboard');
     }
 
     /**

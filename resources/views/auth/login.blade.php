@@ -84,22 +84,22 @@
                                     <form method="POST" action="{{ route('login.store') }}">
                                         @csrf
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="text" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" placeholder="Your E-mail">
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="text" class="form-control" placeholder="Your E-mail">
+{{--                                            @error('email')--}}
+{{--                                            <span class="invalid-feedback" role="alert">--}}
+{{--                                                    <strong>{{ $message }}</strong>--}}
+{{--                                                </span>--}}
+{{--                                            @enderror--}}
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password">
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="password" class="form-control " placeholder="Enter Password">
+{{--                                            @error('password')--}}
+{{--                                            <span class="invalid-feedback" role="alert">--}}
+{{--                                                    <strong>{{ $message }}</strong>--}}
+{{--                                                </span>--}}
+{{--                                            @enderror--}}
                                         </fieldset>
-                                        <button type="submit" class="btn btn-danger btn-block btn-lg"><i class="ft-unlock"></i> Login</button>
+                                        <button type="submit" href="{{route('dashboard')}}" class="btn btn-danger btn-block btn-lg"><i class="ft-unlock"></i> Login</button>
                                     </form>
                                 </div>
                             </div>
