@@ -51,14 +51,18 @@ Route::get('/branch/create', 'BranchesController@create')->name('branch.create')
 Route::get('/size', 'SizesController@index')->name('size');
 Route::get('/size/create', 'SizesController@create')->name('size.create');
 
+
+
 // product
 Route::get('/product', 'ProductsController@index')->name('product');;
 
 Route::get('/product/create', 'ProductsController@create')->name('product.create');;
-Route::get('/product/edit', 'ProductsController@edit')->name('product.edit');;
-Route::get('/product/detals', 'ProductsController@details')->name('product.details');;
-Route::get('/product/delete', 'ProductsController@delete')->name('product.delete');;
-
+Route::get('/product/edit{promotion_id}', 'ProductsController@edit')->name('product.edit');;
+Route::get('/product/create', 'ProductsController@store')->name('product.store');;
+Route::get('/product/update{promotion_id}', 'ProductsController@update')->name('product.update');;
+Route::get('/product/show', 'ProductsController@show')->name('product.show');;
+Route::get('/product/delete{promotion_id}', 'ProductsController@destroy')->name('product.delete');;
+Route::get('/product/search', 'ProductsController@search')->name('product.search');;
 // user
 Route::get('/user', 'UsersController@index')->name('user');
 Route::get('/user/create', 'UsersController@create')->name('user.create');
