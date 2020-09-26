@@ -22,22 +22,33 @@
                                             <div class="col-sm-12">
                                                 <table id="datatable" class="table table-striped table-bordered dom-jQuery-events dataTable" role="grid" aria-describedby="DataTables_Table_0_info">
                                                     <thead>
-                                                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 158.6px;">Product ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 248.2px;">Product Name</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 119.4px;">Price</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 45px;">Discount</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 101.8px;">Category</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 10000px;">Action</th></tr>
+
+                                                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 158.6px;">Product ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 600px;">Product Name</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 119.4px;">Price</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 45px;">Discount</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 101.8px;">Category</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 1500px;">Action</th></tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">P01</td>
-                                                        <td>Long Sleeves</td>
-                                                        <td>80$</td>
-                                                        <td>10%</td>
-                                                        <td>Clothes</td>
-                                                        <td>
-                                                        <a href ="" class='btn btn-sm btn-primary'><i class='la la-pencil'>Edit</i></a>
-                                                        <a href ="" class='btn btn-sm btn-success'><i class='la la-eye'>Details</i></a>
-                                                        <a href ="" class='btn btn-sm btn-danger'><i class='la la-trash-o'>Delete</i></a>
-                                                        
+                                                    
+                                                    <?php $no=1; ?>
+                                                    @foreach ($product as $p)
+                                                    <tr>
+                                                        <td>{{$no++}}</td>
+                                                        <td>{{$p->product_name}}</td>
+                                                        <td>{{$p->price}}</td>
+                                                        <td>{{$p->discount}}</td>
+                                                        <td>{{$p->category_id}}</td>
+                                                        <td> 
+                                                            <a class ="btn btn-sm btn-primary" href ="{{route('product.edit', $p->promotion_id)}}">
+                                                                <i class='la la-pencil'></i></a>
+                                                            <a class ="btn btn-sm btn-success" href ="{{route('product.details', $p->promotion_id)}}">
+                                                                <i class='la la-eye'></i></a>
+                                                            <a class ="btn btn-sm btn-danger" href ="{{route('product.delete', $p->promotion_id)}}">
+                                                                <i class='la la-trash-o'></i></a>
+
                                                         </td>
                                                     </tr>
+                                                    @endforeach
+
+                                                    
+
                                                     </tbody>
                                                 </table>
                                             </div>

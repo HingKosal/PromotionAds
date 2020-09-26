@@ -52,8 +52,12 @@ Route::get('/size', 'SizesController@index')->name('size');
 Route::get('/size/create', 'SizesController@create')->name('size.create');
 
 // product
-Route::get('/product', 'ProductsController@index')->name('product');
-Route::get('/product/create', 'ProductsController@create')->name('product.create');
+Route::get('/product', 'ProductsController@index')->name('product');;
+
+Route::get('/product/create', 'ProductsController@create')->name('product.create');;
+Route::get('/product/edit', 'ProductsController@edit')->name('product.edit');;
+Route::get('/product/detals', 'ProductsController@details')->name('product.details');;
+Route::get('/product/delete', 'ProductsController@delete')->name('product.delete');;
 
 // user
 Route::get('/user', 'UsersController@index')->name('user');

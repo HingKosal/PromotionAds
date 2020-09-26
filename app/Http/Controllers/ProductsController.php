@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\products;
 
 class ProductsController extends Controller
 {
@@ -13,7 +14,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('Backend/manage-promotion/index');
+        $product = products::all();
+        return view('Backend/manage-promotion/index', compact('product'));
+      
     }
 
     /**
@@ -34,7 +37,29 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new products();
+        $product->product_name = $request->input('product_name') ;
+        $product->category_id = $request->input('category_id');
+        $product->brand_id = $request->input('brand_id');
+        $product->price = $request->input('price');
+        $product->discount = $request->input('discount');
+        $product->discription = $request->input('discription');
+        
+
+        if($request->input('image')){
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . "." . $extention;
+            $file->move('backend/app-assets/images/', $filename);
+            $product->image = $filename;
+
+        }else{
+            return $request;
+            $product->image='';
+        }
+        $product->size_id = $request->input('size_id');
+        $product->save();
+        return view('product')->with('product',$product);
     }
 
     /**
