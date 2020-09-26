@@ -13,20 +13,20 @@
     <link rel="shortcut icon" href="https://coderthemes.com/ubold/layouts/assets/images/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/4d485b645e.css">
     <!-- Plugins css -->
-    <link href="{{asset('Frontend/assets/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('Frontend/assets/libs/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('frontend/assets/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('frontend/assets/libs/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{asset('Frontend/assets/css/bootstrap-creative.min.css')}}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-    <link href="{{asset('Frontend/assets/css/app-creative.min.css')}}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="{{asset('frontend/assets/css/bootstrap-creative.min.css')}}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="{{asset('frontend/assets/css/app-creative.min.css')}}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <link href="{{asset('Frontend/assets/css/bootstrap-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-    <link href="{{asset('Frontend/assets/css/app-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <link href="{{asset('frontend/assets/css/bootstrap-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="{{asset('frontend/assets/css/app-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
-    <link href="{{asset('Frontend/assets/css/contact.css')}}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <link href="{{asset('frontend/assets/css/contact.css')}}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
     <!-- icons -->
-    <link href="{{asset('Frontend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('frontend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!--    font awesome-->
     <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
@@ -46,7 +46,7 @@
     <!-- Topbar Start -->
     @include('Frontend.layout.header')
     <!-- end Topbar -->
-    <br><br><br><br>
+    <br><b></b><br><br><b></b><br>
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
     <!-- ============================================================== -->
