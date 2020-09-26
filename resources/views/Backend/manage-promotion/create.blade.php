@@ -10,13 +10,14 @@
                     </div>
                     <div class="card-content collpase show">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="index.blade.php" novalidate method="post">
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('product.store') }}">
+                                @csrf
                                 <div class="form-body">
-
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder="product name" name="product_name">
+                                            <input type="text" class="form-control @error('product_name') is-invalid @enderror" placeholder="product name" name="product_name">
                                         </div>
                                     </div>
 
@@ -37,14 +38,14 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Price: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" price" name="price">
+                                            <input type="text" id="projectinput1" class="form-control @error('price') is-invalid @enderror" placeholder=" price" name="price">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Category ID: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder="category id" name="category_id">
+                                            <input type="text" id="projectinput1" class="form-control @error('category_id') is-invalid @enderror" placeholder="category id" name="category_id">
                                         </div>
                                     </div>
 
@@ -52,15 +53,7 @@
 
                                         <label class="col-md-3 label-control" for="projectinput1">Discount: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" discount" name="discount">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Title: </label>
-                                        <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" title" name="title">
-
+                                            <input type="text" id="projectinput1" class="form-control @error('discount') is-invalid @enderror" placeholder=" discount" name="discount">
                                         </div>
                                     </div>
 
@@ -90,21 +83,21 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Company Name: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" company name" name="company_name">
+                                            <input type="text" id="projectinput1" class="form-control @error('company_name') is-invalid @enderror" placeholder=" company name" name="company_name">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Location: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" location" name="location">
+                                            <input type="text" id="projectinput1" class="form-control @error('location') is-invalid @enderror" placeholder=" location" name="location">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Phone: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control" placeholder=" phone" name="phone">
+                                            <input type="text" id="projectinput1" class="form-control @error('phone') is-invalid @enderror" placeholder=" phone" name="phone">
                                         </div>
                                     </div>
 

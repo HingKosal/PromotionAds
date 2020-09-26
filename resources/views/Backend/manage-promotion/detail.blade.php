@@ -5,17 +5,18 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Update Product</h2>
+                        <h2>Add New Product</h2>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     </div>
                     <div class="card-content collpase show">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="{{route('product.update', $product->promotion_id)}}" method="post">
+                            <form class="form form-horizontal" action="{{route('prodct.store')}}" novalidate method="post">
                                 <div class="form-body">
+
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('product_name') is-invalid @enderror" placeholder="product name" name="product_name">
+                                            <input type="text" id="projectinput1" class="form-control" placeholder="product name" name="product_name">
                                         </div>
                                     </div>
 
@@ -36,7 +37,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Price: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('price') is-invalid @enderror" placeholder=" price" name="price">
+                                            <input type="text" id="projectinput1" class="form-control" placeholder=" price" name="price">
                                         </div>
                                     </div>
 
@@ -55,7 +56,13 @@
                                         </div>
                                     </div>
 
-                                
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Title: </label>
+                                        <div class="col-md-5">
+                                            <input type="text" id="projectinput1" class="form-control" placeholder=" title" name="title">
+
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Description</label>
@@ -83,31 +90,32 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Company Name: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('company_name') is-invalid @enderror" placeholder=" company name" name="company_name">
+                                            <input type="text" id="projectinput1" class="form-control" placeholder=" company name" name="company_name">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Location: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('location') is-invalid @enderror" placeholder=" location" name="location">
+                                            <input type="text" id="projectinput1" class="form-control" placeholder=" location" name="location">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Phone: </label>
                                         <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('phone') is-invalid @enderror" placeholder=" phone" name="phone">
+                                            <input type="text" id="projectinput1" class="form-control" placeholder=" phone" name="phone">
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="form-actions">
-                                    <button type="button" class="btn btn-warning mr-1">
-                                        <a href="{{url('/product')}}"><i class="ft-x"></i> Cancel</a>
+                                    <button type="button" class="btn btn-danger">
+                                        <a href="{{url('/product')}}"><i class="la la-close"></i> Cancel</a>
+
                                     </button>
                                     <button type="submit" name="create" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> Create
+                                        <a href="{{url('/product')}}"><i class="la la-check-square-o"></i> Create</a>
                                     </button>
                                 </div>
                             </form>
@@ -118,4 +126,4 @@
         </div>
     </section>
 
-@endsection
+    @endsection
