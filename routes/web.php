@@ -76,7 +76,7 @@ Route::get('/user/delete{id}','UsersController@destroy')->name('user.delete');
 Route::get('/register', 'RegisterController@index')->name('register');
 Route::get('/register/create', 'RegisterController@create')->name('register.create');
 Route::post('/register/create', 'RegisterController@store')->name('register.store');
-Route::post('/dashboard', 'RegisterController@dashboard')->name('dashboard');
+Route::get('/dashboard', 'RegisterController@dashboard')->name('dashboard');
 
 
 Route::get('/login', 'LoginController@index')->name('login');

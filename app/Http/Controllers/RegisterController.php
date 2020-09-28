@@ -16,10 +16,6 @@ class RegisterController extends Controller
     public function index()
     {
         return view('auth.register');
-//        $users = users::paginate(5);
-//        return view('auth.register',compact('users'));
-//        $user = users::all();
-//        return view('auth.register');
     }
 
     public function dashboard()
