@@ -3,7 +3,8 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a href="#"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">1</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="{{url('/')}}" data-i18n="nav.dash.ecommerce">sales</a>
+                    <li>
+                        <a class="menu-item" href="{{url('/dashboard')}}" data-i18n="nav.dash.ecommerce">sales</a>
                     </li>
                 </ul>
             </li>
