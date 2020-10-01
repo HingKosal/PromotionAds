@@ -80,7 +80,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="{{route('register.store')}}" method="POST">
+                            <form method="POST" action="{{ route('register') }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12 col-sm-6 col-md-6">
@@ -193,3 +193,4 @@
 <!-- END PAGE LEVEL JS-->
 </body>
 </html>
+

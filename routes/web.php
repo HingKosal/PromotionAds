@@ -72,13 +72,7 @@ Route::get('/user/update{id}','UsersController@update')->name('user.update');
 Route::get('/user/delete{id}','UsersController@destroy')->name('user.delete');
 
 
-// auth
-Route::get('/register', 'RegisterController@index')->name('register');
-Route::get('/register/create', 'RegisterController@create')->name('register.create');
-Route::post('/register/create', 'RegisterController@store')->name('register.store');
-Route::get('/dashboard', 'RegisterController@dashboard')->name('dashboard');
 
 
-Route::get('/login', 'LoginController@index')->name('login');
-Route::get('/login/create', 'LoginController@create')->name('login.create');
-Route::post('/login/create', 'LoginController@store')->name('login.store');
+Auth::routes();
+
