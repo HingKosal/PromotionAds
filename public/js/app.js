@@ -49878,8 +49878,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Admin\Documents\Laravel\PromotionAds\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Admin\Documents\Laravel\PromotionAds\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\5.University of Phutisastra\Year3\Semester2\Dynamic Web Application\FinalProject\PromotionAds\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\5.University of Phutisastra\Year3\Semester2\Dynamic Web Application\FinalProject\PromotionAds\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
