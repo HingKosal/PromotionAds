@@ -15,10 +15,10 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
-            $table->string('location');
-            $table->string('phone');
-            $table->string('description');
+            $table->string('company_name')->unique();
+            $table->string('location')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('description')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

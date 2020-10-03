@@ -31,7 +31,7 @@ class CreateProductsTable extends Migration
 
             $table->string('price');
             $table->string('discount');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('image');
 
             $table->unsignedBigInteger('size_id');
@@ -46,7 +46,7 @@ class CreateProductsTable extends Migration
                   ->on('companies')
                   ->onDelete('cascade');
 
-            $table->string('published');
+            $table->string('published')->nullable();
             $table->timestamps();
         });
     }
