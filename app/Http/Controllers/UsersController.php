@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\users;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = users::paginate(5);
+        $user = User::paginate(5);
         return view('Backend/manage-user/index',compact('user'));
     }
 
@@ -45,7 +45,7 @@ class UsersController extends Controller
             'password' => 'required|min:8',
             'password_confirmation' => 'required'
         ]);
-        $user = new users([
+        $user = new User([
             'first_name' => $request->get('fname'),
             'last_name' => $request->get('lname'),
             'username' => $request->get('username'),
@@ -76,7 +76,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $users = users::find($id);
+        $users = User::find($id);
         return view('Backend.manage-user.edit',compact('users'));
     }
 
@@ -95,8 +95,7 @@ class UsersController extends Controller
             'username' => 'required',
             'email' => 'required'
         ]);
-        $user = users::find($id);
-        //        dd($user);
+        $user = User::find($id);
         $user->first_name = $request->fname;
         $user->last_name = $request->lname;
         $user->username = $request->username;
@@ -113,7 +112,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        users::find($id)->delete();
+        User::find($id)->delete();
         return redirect()->route('user');
     }
 }

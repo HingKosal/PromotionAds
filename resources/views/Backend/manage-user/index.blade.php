@@ -39,10 +39,10 @@
                                                             <td>{{$u->username}}</td>
                                                             <td>{{$u->email}}</td>
                                                             <td>
-{{--                                                                <a class="btn btn-warning btn-sm" href="#" role="button">reset password</a>--}}
+                                                                <a class="btn btn-warning btn-sm" href="{{route('password.request')}}" role="button">reset password</a>
                                                                 <a class="btn btn-primary btn-sm" href="{{route('user.edit',$u->id)}}" role="button">edit</a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" href="{{route('user.delete',$u->id)}}" role="button">delete</a>
-{{--                                                                <a class="btn btn-secondary btn-sm" href="#" role="button">view</a>--}}
+                                                                <a class="btn btn-secondary btn-sm" href="#" role="button">view</a>
                                                             </td>
                                                         </tr>
                                                         @endforeach
