@@ -57,12 +57,14 @@ Route::get('/size/create', 'SizesController@create')->name('size.create');
 Route::get('/product', 'ProductsController@index')->name('product');;
 
 Route::get('/product/create', 'ProductsController@create')->name('product.create');;
-Route::get('/product/edit{promotion_id}', 'ProductsController@edit')->name('product.edit');;
-Route::get('/product/create', 'ProductsController@store')->name('product.store');;
-Route::get('/product/update{promotion_id}', 'ProductsController@update')->name('product.update');;
-Route::get('/product/show', 'ProductsController@show')->name('product.show');;
-Route::get('/product/delete{promotion_id}', 'ProductsController@destroy')->name('product.delete');;
+Route::post('/product/create', 'ProductsController@store')->name('product.store');;
+Route::get('/product/edit{id}', 'ProductsController@edit')->name('product.edit');;
+Route::get('/product/update{id}', 'ProductsController@update')->name('product.update');;
+Route::get('/product/show{id}', 'ProductsController@show')->name('product.show');;
+Route::get('/product/delete{id}', 'ProductsController@destroy')->name('product.delete');;
 Route::get('/product/search', 'ProductsController@search')->name('product.search');;
+
+
 // user
 Route::get('/user', 'UsersController@index')->name('user');
 Route::get('/user/create', 'UsersController@create')->name('user.create');

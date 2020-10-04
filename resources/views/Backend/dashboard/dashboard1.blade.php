@@ -12,10 +12,11 @@
                             <div class="col-lg-4 col-12">
                                 <div class="card pull-up" style="background-color:greenyellow">
                                     <div class="card-content">
-                                        <div class="card-body">
+                                        <div class ="card-body">
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
                                                     <h6 class="text-muted">All Customer </h6>
+                                                    
                                                     <h3>68</h3>
                                                 </div>
                                                 <div class="align-self-center">

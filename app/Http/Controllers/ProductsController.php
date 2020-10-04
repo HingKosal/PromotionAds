@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\products;
+use App\Models\categories;
+use App\Models\brands;
+use App\Models\sizes;
 
 class ProductsController extends Controller
 {
@@ -15,7 +18,7 @@ class ProductsController extends Controller
     public function index()
     {
         $product = products::paginate(10);
-        return view('Backend/manage-promotion/index', compact('product'));
+        return view('Backend/manage-promotion/index', compact('product'))->with('i', (request()->input('page', 1) - 1) * 5);
       
     }
 
@@ -26,8 +29,13 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('Backend/manage-promotion/create');
+        $category = categories::all(['id','title']);
+        $brand = brands::all(['id','brand_name']);
+        $size = sizes::all(['id','size_name']);
+        return view('Backend/manage-promotion/create',compact('category','brand','size')) ->with('success','product created successfully');
+        //return view('Backend/manage-promotion/create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -40,29 +48,41 @@ class ProductsController extends Controller
        $this->validate( $request,
            [
             'product_name' => 'required',
-            'category_id' => 'required',
-            'brand_id' => 'required',
+            'category' => 'required',
+            'brand' => 'required',
             'price' => 'required',
             'discount' => 'required',
             'description' => 'required',
-            'image' => 'required',
-            'size_id' => 'required',
-            'user_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'size' => 'required',
+            
            ]
            );
 
+           
+
            $product = new products([
                'product_name' => $request->get('product_name'),
-               'category_id' => $request->get('category_id'),
-               'brand_id' => $request->get('brand_id'),
+               'category' => $request->get('category'),
+               'brand' => $request->get('brand'),
                'price' => $request->get('price'),
                'discount' => $request->get('discount'),
                'description' => $request->get('description'),
-               'image' => $request->get('image'),
-               'size_id' => $request->get('size_id'),
-               'user_id' => $request->get('user_id'),
+               'size' => $request->get('size'),
+
+               
+              
 
            ]);
+
+           if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $product = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $product);
+            
+        }
+           
            $product->save();
            return redirect()->route('product');
          
@@ -76,7 +96,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = products::find($id);
+        return view('Backend/manage-promotion/show', compact('product'));
     }
 
     /**
@@ -85,9 +106,13 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($promotion_id)
+    public function edit($id)
     {
-        $product = products::find($promotion_id);
+       
+        $product = products::find($id);
+        $category = categories::all(['id','title']);
+        $brand = brands::all(['id','brand_name']);
+        $size = sizes::all(['id','size_name']);
         return view('Backend/manage-promotion/edit', compact('product'));
     }
 
@@ -98,31 +123,30 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $promotion_id)
+    public function update(Request $request, $id)
     {
         $this->validate( $request,
            [
             'product_name' => 'required',
-            'category_id' => 'required',
-            'brand_id' => 'required',
+            'category' => 'required',
+            'brand' => 'required',
             'price' => 'required',
             'discount' => 'required',
             'description' => 'required',
             'image' => 'required',
-            'size_id' => 'required',
-            'user_id' => 'required',
+            'size' => 'required',
+            
            ]
            );
-           $product = products::find($promotion_id);
+           $product = products::find($id);
            $product ->product_name = $request->product_name;
-           $product ->category_id = $request->category_id;
-           $product ->brand_id = $request->brand_id;
+           $product ->category = $request->category;
+           $product ->brand = $request->brand;
            $product ->price = $request->price;
            $product ->discount = $request->discount;
            $product ->description = $request->description;
            $product ->image = $request->image;
-           $product ->size_id = $request->size_id;
-           $product ->user_id = $request->user_id;
+           $product ->size = $request->size;
            $product->save();
            return redirect()->route('product');
 
@@ -131,7 +155,7 @@ class ProductsController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $product = products::where('promotion_id', 'LIKE', '%'.$search.'%')->paginate(5);
+        $product = products::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
         return view ('Backend/manage-promotion/search', compact('product'));
     }
 
@@ -141,9 +165,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($promotion_id)
+    public function destroy($id)
     {
-        products :: find($promotion_id)->delete();
+        products :: find($id)->delete();
         return redirect()->route('product')->with(['message'=> 'Successfully deleted!!']);;
     }
 }

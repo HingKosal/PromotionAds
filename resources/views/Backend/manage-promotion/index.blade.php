@@ -12,7 +12,7 @@
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                                         <div class="row" style="display: flex;justify-content: space-between;margin: 10px 0">
                                             <div>
-                                                <a href="{{route('product')}}" type="button" class="btn btn-primary"> Add New </a>
+                                                <a href="{{route('product.create')}}" type="button" class="btn btn-primary"> Add New </a>
                                             </div>
                                             <div class="col-md-4">
                                                 <form action="{{route('product.search')}}" method="get">
@@ -25,6 +25,14 @@
                                                 </form>
                                             </div>
                                         </div>
+
+                                        @if ($message = Session::get('success'))
+                                            <div class="alert alert-success">
+                                                <p>{{ $message }}</p>
+                                            </div>
+                                        @endif
+
+
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <table id="datatable" class="table table-striped table-bordered dom-jQuery-events dataTable" role="grid" aria-describedby="DataTables_Table_0_info">
@@ -47,17 +55,17 @@
                                                     @foreach ($product as $p)
                                                     <tr>
                                                        
-                                                        <td>{{$p->promotion_id}}</td>
+                                                        <td>{{$p->id}}</td>
                                                         <td>{{$p->product_name}}</td>
                                                         <td>{{$p->price}}</td>
                                                         <td>{{$p->discount}}</td>
                                                         <td>{{$p->category_id}}</td>
                                                         <td> 
-                                                            <a class ="btn btn-sm btn-primary" href ="{{route('product.edit', $p->promotion_id)}}">
+                                                            <a class ="btn btn-sm btn-primary" href ="{{route('product.edit', $p->id)}}">
                                                                 <i class='la la-pencil'></i></a>
-                                                            <a class ="btn btn-sm btn-success" href ="{{route('product.show', $p->promotion_id)}}">
+                                                            <a class ="btn btn-sm btn-success" href ="{{route('product.show', $p->id)}}">
                                                                 <i class='la la-eye'></i></a>
-                                                            <a class ="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to delete?')" href ="{{route('product.delete', $p->promotion_id)}}">
+                                                            <a class ="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to delete?')" href ="{{route('product.delete', $p->id)}}">
                                                                 <i class='la la-trash-o'></i></a>
 
                                                         </td>

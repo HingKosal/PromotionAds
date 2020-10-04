@@ -1,9 +1,13 @@
 @extends('Backend.layout.master')
 @section('content')
+<div>
+    <a href="{{route('product')}}" type="button" class="btn btn-primary"> Back </a>
+</div>
     <section id="horizontal-form-layouts" style="margin-left: 290px">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    
                     <div class="card-header">
                         <h2>Add New Product</h2>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
@@ -12,7 +16,7 @@
                         <div class="card-body">
                             <div class="card-body">
                                 <form method="POST" action="{{ route('product.store') }}">
-                                @csrf
+                                {{ csrf_field() }}
                                 <div class="form-body">
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
@@ -22,30 +26,31 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Category: </label>
-                                        <select class="custom-select col-md-2" id="" style="margin-left:15px;" name="category_id">
-                                            <option value=""></option>
-                                        </select>
+                                        <label class="col-md-3 label-control" for="projectinput1">Category : </label>
+                                        <div class="col-md-5">
+                                            <select name="category" class="form-control">
+                                                @foreach($category as $categories)
+                                                <option value="{{$categories->id}}">{{$categories->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-
+                                
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Brand: </label>
-                                        <select class="custom-select col-md-2" id="" style="margin-left:15px;" name="brand_id">
-                                            <option value=""></option>
-                                        </select>
+                                        <label class="col-md-3 label-control" for="projectinput1">Brand : </label>
+                                        <div class="col-md-5">
+                                            <select name="brand" class="form-control">
+                                                @foreach($brand as $brands)
+                                                <option value="{{$brands->id}}">{{$brands->brand_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Price: </label>
                                         <div class="col-md-5">
                                             <input type="text" id="projectinput1" class="form-control @error('price') is-invalid @enderror" placeholder=" price" name="price">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Category ID: </label>
-                                        <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('category_id') is-invalid @enderror" placeholder="category id" name="category_id">
                                         </div>
                                     </div>
 
@@ -74,10 +79,14 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Size: </label>
-                                        <select class="custom-select col-md-2" id="" style="margin-left:15px;" name="size_id">
-                                            <option value=""></option>
-                                        </select>
+                                        <label class="col-md-3 label-control" for="projectinput1">Size : </label>
+                                        <div class="col-md-5">
+                                            <select name="size" class="form-control">
+                                                @foreach($size as $sizes)
+                                                <option value="{{$sizes->id}}">{{$sizes->size_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group row">
@@ -108,7 +117,7 @@
 
                                     </button>
                                     <button type="submit" name="create" class="btn btn-primary">
-                                        <a href="{{url('/product')}}"><i class="la la-check-square-o"></i> Create</a>
+                                        <i class="la la-check-square-o"></i> Create
                                     </button>
                                 </div>
                             </form>
