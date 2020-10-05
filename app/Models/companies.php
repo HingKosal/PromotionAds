@@ -10,4 +10,5 @@ class companies extends Model
     protected $fillable = [
         'company_name','location','phone', 'description', 'user_id'
     ];
+    protected $primaryKey = 'id';
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\products;
 use App\Models\categories;
 use App\Models\brands;
+use App\Models\companies;
 use App\Models\sizes;
 
 class ProductsController extends Controller
@@ -19,7 +20,7 @@ class ProductsController extends Controller
     {
         $product = products::paginate(10);
         return view('Backend/manage-promotion/index', compact('product'))->with('i', (request()->input('page', 1) - 1) * 5);
-      
+
     }
 
     /**
@@ -32,8 +33,9 @@ class ProductsController extends Controller
         $category = categories::all(['id','title']);
         $brand = brands::all(['id','brand_name']);
         $size = sizes::all(['id','size_name']);
-        return view('Backend/manage-promotion/create',compact('category','brand','size')) ->with('success','product created successfully');
-        //return view('Backend/manage-promotion/create');
+        $company = companies::all(['id','company_name','location','phone']);
+        return view('Backend/manage-promotion/create',compact('category','brand','size','company')) ->with('success','product created successfully');
+        // return view('Backend/manage-promotion/create')->with('success', 'Product created successfully');
     }
 
 
@@ -47,45 +49,45 @@ class ProductsController extends Controller
     {
        $this->validate( $request,
            [
-            'product_name' => 'required',
+            'product_namess' => 'required',
             'category' => 'required',
             'brand' => 'required',
             'price' => 'required',
             'discount' => 'required',
-            'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description',
+            'image',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'size' => 'required',
-            
+            'company' => 'required'
            ]
            );
 
-           
+
 
            $product = new products([
-               'product_name' => $request->get('product_name'),
-               'category' => $request->get('category'),
-               'brand' => $request->get('brand'),
+               'product_name' => $request->get('product_namess'),
+               'category_id' => $request->get('category'),
+               'brand_id' => $request->get('brand'),
                'price' => $request->get('price'),
                'discount' => $request->get('discount'),
                'description' => $request->get('description'),
-               'size' => $request->get('size'),
-
-               
-              
+               'image' => $request->get('image'),
+               'size_id' => $request->get('size'),
+               'company_id' => $request->get('company')
 
            ]);
 
-           if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $product = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images');
-            $image->move($destinationPath, $product);
-            
-        }
-           
+                       //    Not working with the upload picture yet
+                       if ($request->hasFile('image')) {
+                        $image = $request->file('image');
+                        $product = time().'.'.$image->getClientOriginalExtension();
+                        $destinationPath = public_path('/images');
+                        $image->move($destinationPath, $product);}
+
+
            $product->save();
            return redirect()->route('product');
-         
+
     }
 
     /**
@@ -108,7 +110,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-       
+
         $product = products::find($id);
         $category = categories::all(['id','title']);
         $brand = brands::all(['id','brand_name']);
@@ -135,7 +137,7 @@ class ProductsController extends Controller
             'description' => 'required',
             'image' => 'required',
             'size' => 'required',
-            
+
            ]
            );
            $product = products::find($id);

@@ -37,21 +37,19 @@ class CompaniesController extends Controller
     {
         //
         $this->validate($request,[
-            'cname' => 'required',
-            'lo_name' => 'required',
-            'phone' => 'required',
-            'des' => 'required',
-            'user_id' => 'required'
+            'product_name' => 'required',
+            'price' => 'required',
+            'discount' => 'required',
+            'des' => 'required'
         ]);
-        $company = new companies([
-            'company_name' => $request->get('cname'),
-            'location' => $request->get('lo_name'),
-            'phone' => $request->get('phone'),
-            'description' => $request->get('des'),
-            'user_id' => $request->get('user_id'),       
-        ]);
-        $company->save();
-        return redirect()->route('company');
+        // $company = new companies([
+        //     'company_name' => $request->get('cname'),
+        //     'location' => $request->get('price'),
+        //     'phone' => $request->get('discount'),
+        //     'description' => $request->get('des'),
+        // ]);
+        // $company->save();
+        // return redirect()->route('company');
     }
 
     /**
@@ -106,10 +104,10 @@ class CompaniesController extends Controller
         $company = companies::find($id);
         //        dd($user);
         $company->company_name = $request->cname;
-        $company->location = $request->lo_name;   
+        $company->location = $request->lo_name;
         $company->phone = $request->phone;
         $company->description = $request->des;
-        $company->user_id = $request->user_id;  
+        $company->user_id = $request->user_id;
         $company->save();
         return redirect()->route('company');
     }

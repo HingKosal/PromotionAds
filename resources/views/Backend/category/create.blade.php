@@ -14,16 +14,16 @@
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Title : </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Title: </label>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control @error('cname') is-invalid @enderror" value="{{old('cname')}}" placeholder="Enter the Title..." name="cname">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Description : </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Description: </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control @error('des') is-invalid @enderror" value="{{old('des')}}" placeholder=" Enter the Description..." name="des">
+                                            <input type="text" class="form-control" placeholder=" Enter the Description..." name="des">
 
                                         </div>
                                     </div>

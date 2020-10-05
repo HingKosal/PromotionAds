@@ -37,9 +37,9 @@ class CategoriesController extends Controller
     {
         //
         $this->validate($request,[
-            'cname' => 'required',
-            'des' => 'required'
+            'cname' => 'required'
         ]);
+
         $category = new categories([
             'title' => $request->get('cname'),
             'description' => $request->get('des'),
@@ -58,8 +58,8 @@ class CategoriesController extends Controller
     {
         //
         $category = categories::find($id);
-        return view('Backend/category/show', compact('category'));      
-       
+        return view('Backend/category/show', compact('category'));
+
     }
     public function search(Request $request)
     {
@@ -79,7 +79,7 @@ class CategoriesController extends Controller
         //
         $categories = categories::find($id);
         return view('Backend.category.edit',compact('categories'));
-        
+
     }
 
     /**
@@ -99,7 +99,7 @@ class CategoriesController extends Controller
         $category = categories::find($id);
         //        dd($user);
         $category->title = $request->cname;
-        $category->description = $request->des;       
+        $category->description = $request->des;
         $category->save();
         return redirect()->route('category');
     }
