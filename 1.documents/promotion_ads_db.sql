@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2020 at 03:18 PM
+-- Generation Time: Oct 05, 2020 at 06:00 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `promotion_ads_db`
+-- Database: `test1`
 --
 
 -- --------------------------------------------------------
@@ -28,19 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `brands` (
-  `brand_id` char(255) NOT NULL,
-  `brand_name` varchar(255) NOT NULL,
-  `description` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `brands`
---
-
-INSERT INTO `brands` (`brand_id`, `brand_name`, `description`) VALUES
-('1', 'Alibaba', ''),
-('2', 'Amazon', ''),
-('3', 'Nike', '');
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -49,20 +42,12 @@ INSERT INTO `brands` (`brand_id`, `brand_name`, `description`) VALUES
 --
 
 CREATE TABLE `categories` (
-  `category_id` char(250) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`category_id`, `title`, `description`) VALUES
-('1', 'Clothes', ''),
-('2', 'Shoes', ''),
-('3', 'Accessories', ''),
-('4', 'Beautys', '');
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -71,117 +56,132 @@ INSERT INTO `categories` (`category_id`, `title`, `description`) VALUES
 --
 
 CREATE TABLE `companies` (
-  `user_id` int(255) NOT NULL,
-  `company_name` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `description` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `companies`
---
-
-INSERT INTO `companies` (`user_id`, `company_name`, `location`, `phone`, `description`) VALUES
-(9, 'Promotion Ads', '', '0969604049', '');
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manage_promotion`
+-- Table structure for table `failed_jobs`
 --
 
-CREATE TABLE `manage_promotion` (
-  `promotion_id` int(255) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `category_id` char(255) NOT NULL,
-  `brand_id` char(255) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `discount` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `size_id` char(255) DEFAULT NULL,
-  `user_id` int(255) NOT NULL,
-  `published` tinyint(4) NOT NULL,
-  `create_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `manage_promotion`
---
-
-INSERT INTO `manage_promotion` (`promotion_id`, `product_name`, `category_id`, `brand_id`, `price`, `discount`, `description`, `image`, `size_id`, `user_id`, `published`, `create_date`) VALUES
-(1019, 'Blue T Shirt', '1', '1', '12.00', '50', 'testing', '1596566899_product-9.jpg', '002', 9, 1, '2020-08-11 22:48:39'),
-(1020, 'High End', '1', '1', '15.00', '40', 'test', '1596568859_product-2.png', '002', 9, 1, '2020-08-05 02:20:59'),
-(1021, 'Amazing Modern Chair', '1', '1', '15.00', '50', 'test', '1596569118_product-3.png', '003', 9, 1, '2020-08-05 02:25:18'),
-(1022, 'Designer Awesome Chair', '1', '1', '15.00', '25', 'test', '1596569150_product-4.png', '001', 9, 1, '2020-08-05 02:25:50'),
-(1023, 'The butterfly chair', '1', '1', '10.00', '10', 'test', '1596569203_product-5.png', '003', 9, 1, '2020-08-05 02:26:43'),
-(1024, 'Dining Chairs', '1', '1', '13.00', '20', 'test', '1596569248_product-6.png', '003', 9, 1, '2020-08-05 02:27:28'),
-(1025, 'Plastic Armchair', '1', '1', '14.00', '35', 'test', '1596569288_product-7.png', '002', 9, 1, '2020-08-05 02:28:08'),
-(1026, 'Wing Chairs', '1', '1', '16.00', '30', 'test', '1596569330_product-8.png', '003', 9, 1, '2020-08-05 02:28:50'),
-(1027, 'Black-Converse-Shoes', '2', '1', '20.00', '20', 'test', '1596569425_Black-Converse-Shoes-PNG-HD.png', '002', 9, 1, '2020-08-05 02:30:25'),
-(1028, 'Biblio Converse-Shoes', '2', '1', '35.00', '40', 'test', '1596569596_Converse-Shoes-PNG-Background-Image.png', '002', 9, 1, '2020-08-05 02:33:16'),
-(1029, 'Modern Converse-Shoes', '2', '1', '25.00', '50', 'test', '1596569649_Converse-Shoes-PNG-Picture.png', '002', 9, 1, '2020-08-05 02:34:09'),
-(1030, 'Designer Converse', '2', '1', '16.00', '35', 'test', '1596569706_Converse-Shoes-PNG-Transparent.png', '002', 9, 1, '2020-08-05 02:35:06'),
-(1031, 'Vector-Shoes', '2', '2', '26.00', '25', 'test', '1596569766_Vector-Shoes.png', '003', 9, 1, '2020-08-05 02:36:06'),
-(1032, 'Dining Dance_Shoes', '2', '3', '30.00', '50', 'test', '1596569811_Dance_Shoes.png', '002', 9, 1, '2020-08-05 02:36:51'),
-(1033, 'Plastic Dance-Shoes', '2', '1', '26.00', '60', 'test', '1596569864_Dance-Shoes-PNG-File.png', '002', 9, 1, '2020-08-05 02:37:44'),
-(1034, 'Wing Dance', '2', '3', '30.00', '25', 'test', '1596569913_Dance-Shoes.png', '003', 9, 1, '2020-08-05 02:38:33'),
-(1035, 'ADATA-Sync-Charge', '3', '1', '25.00', '40', 'test', '1596569995_ADATA-Sync-Charge-Lightning-Cable-Series-Launched-400x400.jpg', '003', 9, 1, '2020-08-05 02:39:55'),
-(1036, 'Modern Keyboard', '3', '1', '10.00', '25', 'test', '1596570037_20150511143626_514521-200x200.jpg', '002', 9, 1, '2020-08-05 02:40:37'),
-(1037, 'c615-gallery', '3', '1', '17.00', '36', 'test', '1596570076_c615-gallery-200x200.png', '002', 9, 1, '2020-08-05 02:41:16'),
-(1038, 'Dell Gaming', '3', '1', '36.00', '40', 'test', '1596570132_dell gaming backpack-200x200.jpg', '003', 9, 1, '2020-08-05 02:42:12'),
-(1039, 'MouseM11-1', '3', '1', '34.00', '25', 'test', '1596570184_g603-lightspeed-wireless-gaming-mouse-200x200.png', '002', 9, 1, '2020-08-05 02:43:04'),
-(1040, 'M10-1', '3', '1', '36.00', '40', 'test', '1596570218_M10-1-400x400.jpg', '002', 9, 1, '2020-08-05 02:43:38'),
-(1041, 'apple-magic-mouse', '3', '1', '15.00', '30', 'test', '1596570254_mla02za-apple-magic-mouse-2-400x400.jpg', '002', 9, 1, '2020-08-05 02:45:57'),
-(1042, 'Pen Surface', '3', '1', '15.00', '50', 'test', '1596570286_Pen surface-200x200.jpg', '002', 9, 1, '2020-08-05 02:44:46');
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manage_user`
+-- Table structure for table `migrations`
 --
 
-CREATE TABLE `manage_user` (
-  `user_id` int(255) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `manage_user`
+-- Dumping data for table `migrations`
 --
 
-INSERT INTO `manage_user` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`) VALUES
-(9, 'System', 'Admin', 'System Admin', 'admin@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-(10, 'Kosal', 'Hing', 'Hkosal', 'kosal@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(11, 'Fristname', 'LastName', 'user1', 'user@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(12, 'first', 'last', 'kosal', 'user1@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2020_09_06_073857_create_categories_table', 1),
+(5, '2020_09_06_073947_create_sizes_table', 1),
+(6, '2020_10_02_160956_create_companies_table', 1),
+(7, '2020_10_02_161011_create_brands_table', 1),
+(8, '2020_10_02_164042_create_products_table', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `size`
+-- Table structure for table `password_resets`
 --
 
-CREATE TABLE `size` (
-  `size_id` char(255) NOT NULL,
-  `size_name` varchar(255) NOT NULL,
-  `description` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `size`
+-- Table structure for table `products`
 --
 
-INSERT INTO `size` (`size_id`, `size_name`, `description`) VALUES
-('001', 'Small', ''),
-('002', 'Medium', ''),
-('003', 'Large', ''),
-('004', 'X-Large', '');
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `brand_id` bigint(20) UNSIGNED NOT NULL,
+  `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discount` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size_id` bigint(20) UNSIGNED NOT NULL,
+  `company_id` bigint(20) UNSIGNED NOT NULL,
+  `published` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sizes`
+--
+
+CREATE TABLE `sizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `size_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_confirmation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `remember_token`, `password`, `password_confirmation`, `created_at`, `updated_at`) VALUES
+(1, 'Heng', 'Kosal', 'Heng Kosal', 'hengkosal@gmail.com', NULL, '$2y$10$YW0b.OY0RChtJd.e1vQvQep2ZtuLlyCkcctffARb4j9UWSEHFKnbq', '$2y$10$64BZhiNdZY6mg6r6bdXIgewl6wQZ5arZa6FI10xugbI1cYE2mOZmC', '2020-10-03 05:07:23', '2020-10-03 05:07:23'),
+(2, 'System', 'Admin', 'System Admin', 'systemadmin@gmail.com', NULL, '$2y$10$sPLeJVPyOxfQrF6FaY4gouxgQS7QtZl8ICdGKdDHKWTPc3WT1jgbW', '$2y$10$G4XQV6Fmr10XxAP4aqQGxOcFxFCxClFXqgOiVaqILNq7LMo2dMyA.', '2020-10-03 05:08:13', '2020-10-03 05:08:40'),
+(4, 'kosal', 'Admin', 'System', 'system@gmail.com', NULL, '$2y$10$Ba0ir1ejHPuKnwrH5KqS5OA78oa/pgC9./m6ilF91XVA95mfG.Zkq', '$2y$10$YIJ3wKw0Jq/8M9Y3tpaXVO8LWtRCVpskYUdbDicgoSjptjT2cpIQe', '2020-10-05 00:39:49', '2020-10-05 00:39:49');
 
 --
 -- Indexes for dumped tables
@@ -191,58 +191,118 @@ INSERT INTO `size` (`size_id`, `size_name`, `description`) VALUES
 -- Indexes for table `brands`
 --
 ALTER TABLE `brands`
-  ADD PRIMARY KEY (`brand_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `brands_brand_name_unique` (`brand_name`);
 
 --
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `categories_title_unique` (`title`);
 
 --
 -- Indexes for table `companies`
 --
 ALTER TABLE `companies`
-  ADD PRIMARY KEY (`user_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `companies_company_name_unique` (`company_name`),
+  ADD KEY `companies_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `manage_promotion`
+-- Indexes for table `failed_jobs`
 --
-ALTER TABLE `manage_promotion`
-  ADD PRIMARY KEY (`promotion_id`) USING BTREE,
-  ADD KEY `sizeidpk` (`size_id`) USING BTREE,
-  ADD KEY `catagorypk` (`category_id`) USING BTREE,
-  ADD KEY `brandidpk` (`brand_id`) USING BTREE,
-  ADD KEY `userpk` (`user_id`) USING BTREE;
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `manage_user`
+-- Indexes for table `migrations`
 --
-ALTER TABLE `manage_user`
-  ADD PRIMARY KEY (`user_id`) USING BTREE,
-  ADD UNIQUE KEY `email` (`email`);
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `size`
+-- Indexes for table `password_resets`
 --
-ALTER TABLE `size`
-  ADD PRIMARY KEY (`size_id`) USING BTREE;
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_category_id_foreign` (`category_id`),
+  ADD KEY `products_brand_id_foreign` (`brand_id`),
+  ADD KEY `products_size_id_foreign` (`size_id`),
+  ADD KEY `products_company_id_foreign` (`company_id`);
+
+--
+-- Indexes for table `sizes`
+--
+ALTER TABLE `sizes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sizes_size_name_unique` (`size_name`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_remember_token_unique` (`remember_token`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `manage_promotion`
+-- AUTO_INCREMENT for table `brands`
 --
-ALTER TABLE `manage_promotion`
-  MODIFY `promotion_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1047;
+ALTER TABLE `brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `manage_user`
+-- AUTO_INCREMENT for table `categories`
 --
-ALTER TABLE `manage_user`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sizes`
+--
+ALTER TABLE `sizes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -252,16 +312,16 @@ ALTER TABLE `manage_user`
 -- Constraints for table `companies`
 --
 ALTER TABLE `companies`
-  ADD CONSTRAINT `useridpk` FOREIGN KEY (`user_id`) REFERENCES `manage_user` (`user_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `companies_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `manage_promotion`
+-- Constraints for table `products`
 --
-ALTER TABLE `manage_promotion`
-  ADD CONSTRAINT `branchpk` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`brand_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `categorypk` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `companypk` FOREIGN KEY (`user_id`) REFERENCES `companies` (`user_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `sizeidpk` FOREIGN KEY (`size_id`) REFERENCES `size` (`size_id`) ON UPDATE CASCADE;
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_brand_id_foreign` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_company_id_foreign` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_size_id_foreign` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
