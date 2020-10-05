@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\categories;
 class CategoriesController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('Backend/Category/index');
+        $category = categories::paginate(5);
+        return view('Backend/category/index', compact('category'));
     }
 
     /**
@@ -23,7 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('Backend/Category/create');
+        return view('Backend/category/create');
     }
 
     /**
@@ -35,6 +36,16 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'cname' => 'required',
+            'des' => 'required'
+        ]);
+        $category = new categories([
+            'title' => $request->get('cname'),
+            'description' => $request->get('des'),
+        ]);
+        $category->save();
+        return redirect()->route('category');
     }
 
     /**
@@ -46,6 +57,15 @@ class CategoriesController extends Controller
     public function show($id)
     {
         //
+        $category = categories::find($id);
+        return view('Backend/category/show', compact('category'));      
+       
+    }
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $category = categories::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/category/search', compact('category'));
     }
 
     /**
@@ -57,6 +77,9 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
+        $categories = categories::find($id);
+        return view('Backend.category.edit',compact('categories'));
+        
     }
 
     /**
@@ -69,6 +92,16 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'cname' => 'required',
+            'des' => 'required'
+        ]);
+        $category = categories::find($id);
+        //        dd($user);
+        $category->title = $request->cname;
+        $category->description = $request->des;       
+        $category->save();
+        return redirect()->route('category');
     }
 
     /**
@@ -80,5 +113,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+        categories::find($id)->delete();
+        return redirect()->route('category');
     }
 }

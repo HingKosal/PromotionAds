@@ -35,10 +35,23 @@ Route::get('/dashboard', function () {
 Route::get('/category', 'CategoriesController@index')->name('category');
 Route::get('/category/create', 'CategoriesController@create')->name('category.create');
 
+Route::post('/category/create', 'CategoriesController@store')->name('category.store');
+Route::get('/category/edit{id}','CategoriesController@edit')->name('category.edit');
+Route::get('/category/update{id}','CategoriesController@update')->name('category.update');
+Route::get('/category/delete{id}','CategoriesController@destroy')->name('category.delete');
+Route::get('/category/search', 'CategoriesController@search')->name('category.search');;
+Route::get('/category/show', 'CategoriesController@show')->name('category.show');;
+
 // company
 Route::get('/company', 'CompaniesController@index')->name('company');
 Route::get('/company/create', 'CompaniesController@create')->name('company.create');
 
+Route::post('/company/create', 'CompaniesController@store')->name('company.store');
+Route::get('/company/edit{id}','CompaniesController@edit')->name('company.edit');
+Route::get('/company/update{id}','CompaniesController@update')->name('company.update');
+Route::get('/company/delete{id}','CompaniesController@destroy')->name('company.delete');
+Route::get('/company/search', 'CompaniesController@search')->name('company.search');;
+Route::get('/company/show', 'CompaniesController@show')->name('company.show');;
 // province
 Route::get('/province', 'ProvincesController@index')->name('province');
 Route::get('/province/create', 'ProvincesController@create')->name('province.create');
@@ -50,6 +63,12 @@ Route::get('/branch/create', 'BranchesController@create')->name('branch.create')
 // size
 Route::get('/size', 'SizesController@index')->name('size');
 Route::get('/size/create', 'SizesController@create')->name('size.create');
+Route::post('/size/create', 'SizesController@store')->name('size.store');
+Route::get('/size/edit{id}','SizesController@edit')->name('size.edit');
+Route::get('/size/update{id}','SizesController@update')->name('size.update');
+Route::get('/size/delete{id}','SizesController@destroy')->name('size.delete');
+Route::get('/size/search', 'SizesController@search')->name('size.search');;
+Route::get('/size/show', 'SizesController@show')->name('size.show');;
 
 
 

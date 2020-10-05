@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\sizes;
 class SizesController extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class SizesController extends Controller
      */
     public function index()
     {
-        return view('Backend/configuration/size/index');
+        $size = sizes::paginate(5);
+        return view('Backend/configuration/size/index', compact('size'));
+        
     }
 
     /**
@@ -35,6 +37,16 @@ class SizesController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'sname' => 'required',
+            'des' => 'required'
+        ]);
+        $size = new sizes([
+            'size_name' => $request->get('sname'),
+            'description' => $request->get('des'),
+        ]);
+        $size->save();
+        return redirect()->route('size');
     }
 
     /**
@@ -46,6 +58,8 @@ class SizesController extends Controller
     public function show($id)
     {
         //
+        $size = sizes::find($id);
+        return view('Backend/configuration/size/show', compact('size'));    
     }
 
     /**
@@ -57,6 +71,14 @@ class SizesController extends Controller
     public function edit($id)
     {
         //
+        $sizes = sizes::find($id);
+        return view('Backend.configuration.size.edit',compact('sizes'));
+    }
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $size = sizes::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/configuration/size/search', compact('size'));
     }
 
     /**
@@ -69,6 +91,16 @@ class SizesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'sname' => 'required',
+            'des' => 'required'
+        ]);
+        $size = sizes::find($id);
+        //        dd($user);
+        $size->size_name = $request->sname;
+        $size->description = $request->des;       
+        $size->save();
+        return redirect()->route('size');
     }
 
     /**
@@ -80,5 +112,7 @@ class SizesController extends Controller
     public function destroy($id)
     {
         //
+        sizes::find($id)->delete();
+        return redirect()->route('size');
     }
 }
