@@ -9,7 +9,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard" style="padding-top:10px; padding-bottom:10px">
                                     <div class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                        <h1>Companies</h1>
+                                        <h1>Categories</h1>
                                     </div>
                                 </div>
                             </div>
@@ -18,10 +18,10 @@
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                                         <div class="row" style="display: flex;justify-content: space-between;margin: 10px 0">
                                             <div>
-                                                <a href="{{route('company.create')}}" type="button" class="btn btn-primary"> Add New </a>
+                                                <a href="{{route('brand.create')}}" type="button" class="btn btn-primary"> Add New </a>
                                             </div>
                                             <div class="col-md-4">
-                                                <form action="{{route('company.search')}}" method="get">
+                                                <form action="{{route('brand.search')}}" method="get">
                                                     <div class="input-group">
                                                     <input type="search" class="form-control " name="search" placeholder="" aria-controls="DataTables_Table_0">
                                                     <span class="input-group-prepend">
@@ -46,34 +46,28 @@
 
                                                         <table class="table table-striped table-bordered dom-jQuery-events dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" >
                                                             <thead>
-                                                            <tr style="width: 100%; text-align:center;">
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 5%;">Compnay ID</th>
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 15%;">Compnay Name</th>
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 20%">Location</th>
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 15%;">Phone</th>
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 25%">Description</th>
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 5%;">UserID</th>
-                                                                <th style="padding-left: 5px; padding-right: 5px; width: 15%;">Action</th>
+                                                            <tr style="width: 100%">
+                                                                <th>Category ID</th>
+                                                                <th>Title</th>
+                                                                <th>Description</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                             </thead>
                                                     <tbody>
 
 
-                                                    @foreach ($company as $p)
+                                                    @foreach ($category as $p)
                                                     <tr>
 
                                                         <td>{{$p->id}}</td>
-                                                            <td>{{$p->company_name}}</td>
-                                                            <td>{{$p->location}}</td>
-                                                            <td>{{$p->phone}}</td>
-                                                            <td>{{$p->description}}</td>
-                                                            <td>{{$p->user_id}}</td>
+                                                        <td>{{$p->title}}</td>
+                                                        <td>{{$p->description}}</td>
 
                                                         <td>
-                                                            <a class ="btn btn-sm btn-primary" href ="{{route('company.edit', $p->id)}}">
+                                                            <a class ="btn btn-sm btn-primary" href ="{{route('category.edit', $p->id)}}">
                                                                 <i class='la la-pencil'></i></a>
 
-                                                            <a class ="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to delete?')" href ="{{route('company.delete', $p->id)}}">
+                                                            <a class ="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to delete?')" href ="{{route('category.delete', $p->id)}}">
                                                                 <i class='la la-trash-o'></i></a>
 
                                                         </td>
@@ -81,7 +75,7 @@
                                                     @endforeach
                                                     </tbody>
                                                 </table>
-                                                {{$company->links()}}
+                                                {{$brand->links()}}
                                             </div>
                                         </div>
                                     </div>

@@ -21,7 +21,7 @@
 
                                     {{-- product name --}}
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Product Namessss: </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control @error('product_name') is-invalid @enderror" placeholder="product name" name="product_namess">
                                         </div>
@@ -55,7 +55,7 @@
 
                                     {{-- Price --}}
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Pricesssss: </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Price: </label>
                                         <div class="col-md-5">
                                             <input type="text" id="projectinput1" class="form-control @error('price') is-invalid @enderror" placeholder=" price" name="price">
                                         </div>
@@ -64,7 +64,7 @@
                                     {{-- Discount --}}
                                     <div class="form-group row">
 
-                                        <label class="col-md-3 label-control" for="projectinput1">Discountsssss: </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Discount: </label>
                                         <div class="col-md-5">
                                             <input type="text" id="projectinput1" class="form-control @error('discount') is-invalid @enderror" placeholder=" discount" name="discount">
                                         </div>
@@ -72,9 +72,9 @@
 
                                     {{-- Description --}}
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Descriptionsssss: </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">Description: </label>
                                         <div class="col-md-5">
-                                            <textarea name="description" id="projectinput1" cols="67" rows="4"></textarea>
+                                            <textarea name="description" id="projectinput1" style="width: 100%" rows="4"></textarea>
                                         </div>
                                     </div>
 
@@ -98,7 +98,7 @@
                                         <label class="col-md-3 label-control" for="projectinput1">Size: </label>
                                         <div class="col-md-5">
                                             <select name="size" class="form-control">
-                                                <option value="">Please select Brand</option>
+                                                <option value="">Please select Size</option>
                                                 @foreach($size as $sizes)
                                                 <option value="{{$sizes->id}}">{{$sizes->size_name}}</option>
                                                 @endforeach
@@ -111,7 +111,7 @@
                                         <label class="col-md-3 label-control" for="projectinput1">Company Name: </label>
                                         <div class="col-md-5">
                                             <select name="company" class="form-control">
-                                                <option value="">Please select Brand</option>
+                                                <option value="">Please select Company</option>
                                                 @foreach($company as $companies)
                                                 <option value="{{$companies->id}}">{{$companies->company_name}}</option>
                                                 @endforeach

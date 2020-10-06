@@ -1,11 +1,11 @@
 @extends('Backend.layout.master')
 @section('content')
-    <section id="horizontal-form-layouts" style="margin-left: 290px">
+    <section id="horizontal-form-layouts">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Add New Size</h2>
+                        <h2>Add New Company</h2>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     </div>
                     <div class="card-content collpase show">
@@ -13,20 +13,27 @@
                             <form method="POST" action="{{ route('company.store') }}">
                                 @csrf
                                 <div class="form-body">
+
+                                    {{-- Company name --}}
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Company Name : </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control @error('cname') is-invalid @enderror" value="{{old('cname')}}" placeholder="Enter Company Name..." name="cname">
+                                            <input type="text" class="form-control @error('company_name') is-invalid @enderror" value="{{old('cname')}}" placeholder="Enter Company Name..." name="company_name">
+                                            @error('company_name')
+                                            <div class="alert alert-danger">Company already exist!</div>
+                                            @enderror
                                         </div>
                                     </div>
 
+                                    {{-- Location --}}
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Location : </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control @error('lo_name') is-invalid @enderror" value="{{old('lo_name')}}" placeholder=" Enter the Location..." name="lo_name">
-
+                                            <input type="text" class="form-control @error('location') is-invalid @enderror" value="{{old('lo_name')}}" placeholder=" Enter the Location..." name="location">
                                         </div>
                                     </div>
+
+                                    {{-- Phone --}}
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Phone: </label>
                                         <div class="col-md-5">
@@ -34,19 +41,26 @@
                                         </div>
                                     </div>
 
+                                    {{-- Descripiton --}}
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Description : </label>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control @error('des') is-invalid @enderror" value="{{old('des')}}" placeholder=" Enter the Description..." name="des">
-
                                         </div>
                                     </div>
+
+                                    {{-- User id --}}
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">User ID : </label>
+                                        <label class="col-md-3 label-control" for="projectinput1">User: </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control @error('user_id') is-invalid @enderror" value="{{old('user_id')}}" placeholder="Enter Size Name..." name="user_id">
+                                            <select name="user" class="form-control">
+                                                <option value="">Please select User</option>
+                                                @foreach($User as $users)
+                                                <option value="{{$users->id}}">{{$users->username}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                 </div>
 
                                 <div class="form-actions">

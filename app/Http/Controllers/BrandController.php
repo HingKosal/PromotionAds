@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brands;
 use Illuminate\Http\Request;
 
-class BranchesController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class BranchesController extends Controller
      */
     public function index()
     {
-        return view('Backend/configuration/branch/index');
+        return view('Backend/configuration/brand/index');
     }
 
     /**
@@ -23,7 +24,7 @@ class BranchesController extends Controller
      */
     public function create()
     {
-        return view('Backend/configuration/branch/create');
+        return view('Backend/configuration/brand/create');
     }
 
     /**
@@ -48,6 +49,12 @@ class BranchesController extends Controller
         //
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $category = brands::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/category/search', compact('category'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

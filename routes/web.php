@@ -57,8 +57,8 @@ Route::get('/province', 'ProvincesController@index')->name('province');
 Route::get('/province/create', 'ProvincesController@create')->name('province.create');
 
 // branch
-Route::get('/branch', 'BranchesController@index')->name('branch');
-Route::get('/branch/create', 'BranchesController@create')->name('branch.create');
+Route::get('/brand', 'BrandController@index')->name('brand');
+Route::get('/brand/create', 'BrandController@create')->name('brand.create');
 
 // size
 Route::get('/size', 'SizesController@index')->name('size');

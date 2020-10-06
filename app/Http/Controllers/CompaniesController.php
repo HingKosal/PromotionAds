@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\companies;
+use App\User;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
@@ -24,7 +25,8 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        return view('Backend/configuration/company/create');
+        $User = User::all(['id','username']);
+        return view('Backend/configuration/company/create',compact('User'))->with('success','Company created Successfully!!');
     }
 
     /**
@@ -37,19 +39,21 @@ class CompaniesController extends Controller
     {
         //
         $this->validate($request,[
-            'product_name' => 'required',
-            'price' => 'required',
-            'discount' => 'required',
-            'des' => 'required'
+            'company_name' => 'required|unique:companies,company_name',
+            'location' => 'required',
+            'phone' => 'required',
+            'des',
+            'user' => 'required',
         ]);
-        // $company = new companies([
-        //     'company_name' => $request->get('cname'),
-        //     'location' => $request->get('price'),
-        //     'phone' => $request->get('discount'),
-        //     'description' => $request->get('des'),
-        // ]);
-        // $company->save();
-        // return redirect()->route('company');
+        $company = new companies([
+            'company_name' => $request->get('company_name'),
+            'location' => $request->get('location'),
+            'phone' => $request->get('phone'),
+            'description' => $request->get('des'),
+            'user_id' => $request->get('user')
+        ]);
+        $company->save();
+        return redirect()->route('company');
     }
 
     /**
@@ -71,6 +75,8 @@ class CompaniesController extends Controller
         return view ('Backend/configuration/company/search', compact('company'));
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,8 +86,10 @@ class CompaniesController extends Controller
     public function edit($id)
     {
         //
+        $User = User::all(['id','username']);
         $companies = companies::find($id);
-        return view('Backend.configuration.company.edit',compact('companies'));
+        $User1 = User::where('id','LIKE', $companies->user_id);
+        return view('Backend.configuration.company.edit',compact('companies','User','User1'))->with('success','Update Company Successfully!!');
     }
 
     /**
@@ -95,19 +103,19 @@ class CompaniesController extends Controller
     {
         //
         $this->validate($request,[
-            'cname' => 'required',
-            'lo_name' => 'required',
-            'des' => 'required',
+            'company_name' => 'required',
+            'location' => 'required',
             'phone' => 'required',
-            'user_id' => 'required',
+            'des',
+            'user' => 'required',
         ]);
         $company = companies::find($id);
-        //        dd($user);
-        $company->company_name = $request->cname;
-        $company->location = $request->lo_name;
+        $company->company_name = $request->company_name;
+        $company->location = $request->location;
         $company->phone = $request->phone;
         $company->description = $request->des;
-        $company->user_id = $request->user_id;
+        $company->user_id = $request->user;
+
         $company->save();
         return redirect()->route('company');
     }

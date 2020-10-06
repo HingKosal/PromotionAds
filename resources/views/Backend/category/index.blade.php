@@ -6,7 +6,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                             <h1>Categories</h1>
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard" style="padding-top:10px; padding-bottom:10px">
+                                    <div class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                        <h1>Categories</h1>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -43,24 +49,24 @@
                                                             <tr style="width: 100%">
                                                                 <th>Category ID</th>
                                                                 <th>Title</th>
-                                                                <th>Description</th>                                                             
+                                                                <th>Description</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                             </thead>
                                                     <tbody>
-                                                    
-                                                    
+
+
                                                     @foreach ($category as $p)
                                                     <tr>
-                                                       
+
                                                         <td>{{$p->id}}</td>
                                                         <td>{{$p->title}}</td>
                                                         <td>{{$p->description}}</td>
-                                                        
-                                                        <td> 
+
+                                                        <td>
                                                             <a class ="btn btn-sm btn-primary" href ="{{route('category.edit', $p->id)}}">
                                                                 <i class='la la-pencil'></i></a>
-                                                            
+
                                                             <a class ="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to delete?')" href ="{{route('category.delete', $p->id)}}">
                                                                 <i class='la la-trash-o'></i></a>
 

@@ -64,7 +64,7 @@ class CategoriesController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $category = categories::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
+        $category = categories::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
         return view ('Backend/category/search', compact('category'));
     }
 
@@ -94,10 +94,9 @@ class CategoriesController extends Controller
         //
         $this->validate($request,[
             'cname' => 'required',
-            'des' => 'required'
+            'des'
         ]);
         $category = categories::find($id);
-        //        dd($user);
         $category->title = $request->cname;
         $category->description = $request->des;
         $category->save();
