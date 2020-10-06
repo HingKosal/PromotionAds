@@ -9,6 +9,8 @@ use App\Models\brands;
 use App\Models\companies;
 use App\Models\sizes;
 
+use Storage;
+
 class ProductsController extends Controller
 {
     /**
@@ -63,6 +65,15 @@ class ProductsController extends Controller
            );
 
 
+           //    Not working with the upload picture yet
+
+
+            $image = $request->file('image')[0];
+            var_dump($image);
+            // $product =  $request->get('image');
+            $destinationPath = public_path('/images');
+            Storage::move( $image, $destinationPath );
+            //$image->move($destinationPath, $product);
 
            $product = new products([
                'product_name' => $request->get('product_namess'),
@@ -76,16 +87,10 @@ class ProductsController extends Controller
                'company_id' => $request->get('company')
 
            ]);
-
-                       //    Not working with the upload picture yet
-                       if ($request->hasFile('image')) {
-                        $image = $request->file('image');
-                        $product = time().'.'.$image->getClientOriginalExtension();
-                        $destinationPath = public_path('/images');
-                        $image->move($destinationPath, $product);}
-
-
            $product->save();
+
+
+
            return redirect()->route('product');
 
     }
