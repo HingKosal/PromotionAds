@@ -1,6 +1,6 @@
 @extends('Backend.layout.master')
 @section('content')
-    <section id="horizontal-form-layouts" style="margin-left: 290px">
+    <section id="horizontal-form-layouts">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

@@ -57,6 +57,13 @@ class UsersController extends Controller
         return redirect()->route('user');
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $user = User::where('username', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/manage-user/index', compact('user'));
+    }
+
     /**
      * Display the specified resource.
      *

@@ -75,7 +75,9 @@
                                                     @endforeach
                                                     </tbody>
                                                 </table>
-                                                {{$category->links()}}
+                                                <div style="margin-left:40%; margin-right:60%;">
+                                                    {{$category->links()}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

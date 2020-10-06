@@ -74,7 +74,9 @@
                                                     </tbody>
                                                         </thead>
                                                 </table>
-                                                {{$product->links()}}
+                                                <div style="margin-left:40%; margin-right:60%;">
+                                                    {{$product->links()}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

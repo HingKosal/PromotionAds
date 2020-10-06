@@ -48,13 +48,21 @@ Route::get('/company/update{id}','CompaniesController@update')->name('company.up
 Route::get('/company/delete{id}','CompaniesController@destroy')->name('company.delete');
 Route::get('/company/search', 'CompaniesController@search')->name('company.search');
 Route::get('/company/show', 'CompaniesController@show')->name('company.show');
+
 // province
 Route::get('/province', 'ProvincesController@index')->name('province');
 Route::get('/province/create', 'ProvincesController@create')->name('province.create');
 
-// branch
+// brand
 Route::get('/brand', 'BrandController@index')->name('brand');
 Route::get('/brand/create', 'BrandController@create')->name('brand.create');
+
+Route::post('/brand/create', 'BrandController@store')->name('brand.store');
+Route::get('/brand/edit{id}','BrandController@edit')->name('brand.edit');
+Route::get('/brand/update{id}','BrandController@update')->name('brand.update');
+Route::get('/brand/delete{id}','BrandController@destroy')->name('brand.delete');
+Route::get('/brand/search', 'BrandController@search')->name('brand.search');
+Route::get('/brand/show', 'BrandController@show')->name('brand.show');
 
 // size
 Route::get('/size', 'SizesController@index')->name('size');
@@ -87,6 +95,7 @@ Route::post('/user/create', 'UsersController@store')->name('user.store');
 Route::get('/user/edit{id}','UsersController@edit')->name('user.edit');
 Route::get('/user/update{id}','UsersController@update')->name('user.update');
 Route::get('/user/delete{id}','UsersController@destroy')->name('user.delete');
+Route::get('/user/search', 'UsersController@search')->name('user.search');
 
 
 

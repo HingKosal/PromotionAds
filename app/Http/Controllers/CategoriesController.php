@@ -65,7 +65,7 @@ class CategoriesController extends Controller
     {
         $search = $request->get('search');
         $category = categories::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view ('Backend/category/search', compact('category'));
+        return view ('Backend/category/index', compact('category'));
     }
 
     /**

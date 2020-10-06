@@ -81,7 +81,9 @@
                                                     @endforeach
                                                     </tbody>
                                                 </table>
-                                                {{$company->links()}}
+                                                <div style="margin-left:40%; margin-right:60%;">
+                                                    {{$company->links()}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

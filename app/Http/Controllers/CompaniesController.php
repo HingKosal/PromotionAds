@@ -71,8 +71,8 @@ class CompaniesController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $company = companies::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view ('Backend/configuration/company/search', compact('company'));
+        $company = companies::where('company_name', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/configuration/company/index', compact('company'));
     }
 
 

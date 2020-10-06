@@ -15,7 +15,7 @@ class SizesController extends Controller
     {
         $size = sizes::paginate(5);
         return view('Backend/configuration/size/index', compact('size'));
-        
+
     }
 
     /**
@@ -39,7 +39,7 @@ class SizesController extends Controller
         //
         $this->validate($request,[
             'sname' => 'required',
-            'des' => 'required'
+            'des',
         ]);
         $size = new sizes([
             'size_name' => $request->get('sname'),
@@ -59,7 +59,7 @@ class SizesController extends Controller
     {
         //
         $size = sizes::find($id);
-        return view('Backend/configuration/size/show', compact('size'));    
+        return view('Backend/configuration/size/show', compact('size'));
     }
 
     /**
@@ -77,8 +77,8 @@ class SizesController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $size = sizes::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view ('Backend/configuration/size/search', compact('size'));
+        $size = sizes::where('size_name', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/configuration/size/index', compact('size'));
     }
 
     /**
@@ -93,12 +93,12 @@ class SizesController extends Controller
         //
         $this->validate($request,[
             'sname' => 'required',
-            'des' => 'required'
+            'des'
         ]);
         $size = sizes::find($id);
         //        dd($user);
         $size->size_name = $request->sname;
-        $size->description = $request->des;       
+        $size->description = $request->des;
         $size->save();
         return redirect()->route('size');
     }

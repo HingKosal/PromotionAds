@@ -7,14 +7,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-content collapse show">
+                                <div class="card-body card-dashboard" style="padding-top:10px; padding-bottom:10px">
+                                    <div class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                        <h1>Manage User</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                                         <div class="row" style="display: flex;justify-content: space-between;margin: 10px 0">
                                             <div>
                                                 <a href="{{route('user.create')}}" type="button" class="btn btn-primary"> Add New </a>
                                             </div>
-                                            <div style="display: flex">
-                                                <label>Search:</label><input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_0">
+                                            <div class="col-md-4">
+                                                <form action="{{route('user.search')}}" method="get">
+                                                    <div class="input-group">
+                                                    <input type="search" class="form-control " name="search" placeholder="" aria-controls="DataTables_Table_0">
+                                                    <span class="input-group-prepend">
+                                                        <button type="submit" class="btn btn-primary">Search</button>
+                                                    </span>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -40,15 +54,17 @@
                                                             <td>{{$u->email}}</td>
                                                             <td>
                                                                 <a class="btn btn-warning btn-sm" href="{{route('password.request')}}" role="button">reset password</a>
-                                                                <a class="btn btn-primary btn-sm" href="{{route('user.edit',$u->id)}}" role="button">edit</a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" href="{{route('user.delete',$u->id)}}" role="button">delete</a>
-                                                                <a class="btn btn-secondary btn-sm" href="#" role="button">view</a>
+                                                                <a class="btn btn-primary btn-sm" href="{{route('user.edit',$u->id)}}" role="button"><i class='la la-pencil'></i></a>
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" href="{{route('user.delete',$u->id)}}" role="button"><i class='la la-trash-o'></i></a>
+                                                                <a class="btn btn-secondary btn-sm" href="#" role="button"><i class='la la-eye'></i></a>
                                                             </td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
-                                                {{ $user->links() }}
+                                                <div style="margin-left:40%; margin-right:60%;">
+                                                    {{$user->links()}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -62,4 +78,3 @@
     @endsection
 
 
-    

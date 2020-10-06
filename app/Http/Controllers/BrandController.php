@@ -14,7 +14,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('Backend/configuration/brand/index');
+        $brand = brands::paginate(5);
+        return view('Backend/configuration/brand/index', compact('brand'));
     }
 
     /**
@@ -35,7 +36,16 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'brand_name' => 'required',
+        ]);
+
+        $brand = new brands([
+            'brand_name' => $request->get('brand_name'),
+            'description' => $request->get('des'),
+        ]);
+        $brand->save();
+        return redirect()->route('brand');
     }
 
     /**
@@ -46,14 +56,15 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        $brand = brands::find($id);
+        return view('Backend/configuration/brand/show', compact('brand'));
     }
 
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $category = brands::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view ('Backend/category/search', compact('category'));
+        $brand = brands::where('brand_name', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view ('Backend/configuration/brand/index', compact('brand'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -63,7 +74,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = brands::find($id);
+        return view('Backend.configuration.brand.edit',compact('brand'));
     }
 
     /**
@@ -75,7 +87,15 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'brand_name' => 'required',
+            'des'
+        ]);
+        $brand = brands::find($id);
+        $brand->brand_name = $request->brand_name;
+        $brand->description = $request->des;
+        $brand->save();
+        return redirect()->route('brand');
     }
 
     /**
@@ -86,6 +106,7 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        brands::find($id)->delete();
+        return redirect()->route('brand');
     }
 }

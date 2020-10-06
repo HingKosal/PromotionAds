@@ -1,6 +1,6 @@
 @extends('Backend.layout.master')
 @section('content')
-    <section id="horizontal-form-layouts" style="margin-left: 290px">
+    <section id="horizontal-form-layouts">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -42,10 +42,10 @@
                                 </div>
                                 <div class="form-actions">
                                     <button type="button" class="btn btn-warning mr-1">
-                                        <a href="{{url('/category')}}"><i class="ft-x"></i> Cancel</a>
+                                        <a href="{{url('/user')}}"><i class="ft-x"></i> Cancel</a>
                                     </button>
                                     <button type="submit" name="create" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> Create
+                                        <i class="la la-check-square-o"></i> Update
                                     </button>
                                 </div>
                             </form>
