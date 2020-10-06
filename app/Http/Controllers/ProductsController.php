@@ -64,17 +64,6 @@ class ProductsController extends Controller
            ]
            );
 
-
-           //    Not working with the upload picture yet
-
-
-            $image = $request->file('image')[0];
-            var_dump($image);
-            // $product =  $request->get('image');
-            $destinationPath = public_path('/images');
-            Storage::move( $image, $destinationPath );
-            //$image->move($destinationPath, $product);
-
            $product = new products([
                'product_name' => $request->get('product_namess'),
                'category_id' => $request->get('category'),
@@ -87,10 +76,11 @@ class ProductsController extends Controller
                'company_id' => $request->get('company')
 
            ]);
+
+           //    Not working with the upload picture yet
+
+
            $product->save();
-
-
-
            return redirect()->route('product');
 
     }
