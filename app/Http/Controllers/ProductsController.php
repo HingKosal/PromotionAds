@@ -40,6 +40,17 @@ class ProductsController extends Controller
         // return view('Backend/manage-promotion/create')->with('success', 'Product created successfully');
     }
 
+    public function product()
+    {
+        $product = products::paginate(10);
+        return view('Frontend.page.index',compact('product'));
+    }
+
+    public function detail($id){
+        $product = products::find($id);
+        return view('Frontend.page.detail', compact('product'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -110,7 +121,7 @@ class ProductsController extends Controller
         $category = categories::all(['id','title']);
         $brand = brands::all(['id','brand_name']);
         $size = sizes::all(['id','size_name']);
-        return view('Backend/manage-promotion/edit', compact('product'));
+        return view('Backend/manage-promotion/edit', compact('product','category','brand','size'));
     }
 
     /**
@@ -153,7 +164,7 @@ class ProductsController extends Controller
     {
         $search = $request->get('search');
         $product = products::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view ('Backend/manage-promotion/search', compact('product'));
+        return view ('Backend/manage-promotion/index', compact('product'));
     }
 
     /**

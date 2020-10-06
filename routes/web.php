@@ -13,18 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // frontend
-Route::get('', function () {
-    return view('Frontend.page.index');
-});
+Route::get('', 'ProductsController@product');
 Route::get('/frontend/about', function () {
     return view('Frontend.page.about');
 });
 Route::get('/frontend/contact', function () {
     return view('Frontend.page.contact');
 });
-Route::get('/frontend/detail', function () {
-    return view('Frontend.page.detail');
-});
+Route::get('/frontend/detail{id}', 'ProductsController@detail');
 
 
 Route::get('/dashboard', function () {
@@ -39,8 +35,8 @@ Route::post('/category/create', 'CategoriesController@store')->name('category.st
 Route::get('/category/edit{id}','CategoriesController@edit')->name('category.edit');
 Route::get('/category/update{id}','CategoriesController@update')->name('category.update');
 Route::get('/category/delete{id}','CategoriesController@destroy')->name('category.delete');
-Route::get('/category/search', 'CategoriesController@search')->name('category.search');;
-Route::get('/category/show', 'CategoriesController@show')->name('category.show');;
+Route::get('/category/search', 'CategoriesController@search')->name('category.search');
+Route::get('/category/show', 'CategoriesController@show')->name('category.show');
 
 // company
 Route::get('/company', 'CompaniesController@index')->name('company');
@@ -50,8 +46,8 @@ Route::post('/company/create', 'CompaniesController@store')->name('company.store
 Route::get('/company/edit{id}','CompaniesController@edit')->name('company.edit');
 Route::get('/company/update{id}','CompaniesController@update')->name('company.update');
 Route::get('/company/delete{id}','CompaniesController@destroy')->name('company.delete');
-Route::get('/company/search', 'CompaniesController@search')->name('company.search');;
-Route::get('/company/show', 'CompaniesController@show')->name('company.show');;
+Route::get('/company/search', 'CompaniesController@search')->name('company.search');
+Route::get('/company/show', 'CompaniesController@show')->name('company.show');
 // province
 Route::get('/province', 'ProvincesController@index')->name('province');
 Route::get('/province/create', 'ProvincesController@create')->name('province.create');
@@ -67,21 +63,21 @@ Route::post('/size/create', 'SizesController@store')->name('size.store');
 Route::get('/size/edit{id}','SizesController@edit')->name('size.edit');
 Route::get('/size/update{id}','SizesController@update')->name('size.update');
 Route::get('/size/delete{id}','SizesController@destroy')->name('size.delete');
-Route::get('/size/search', 'SizesController@search')->name('size.search');;
-Route::get('/size/show', 'SizesController@show')->name('size.show');;
+Route::get('/size/search', 'SizesController@search')->name('size.search');
+Route::get('/size/show', 'SizesController@show')->name('size.show');
 
 
 
 // product
-Route::get('/product', 'ProductsController@index')->name('product');;
+Route::get('/product', 'ProductsController@index')->name('product');
 
-Route::get('/product/create', 'ProductsController@create')->name('product.create');;
-Route::post('/product/create', 'ProductsController@store')->name('product.store');;
-Route::get('/product/edit{id}', 'ProductsController@edit')->name('product.edit');;
-Route::get('/product/update{id}', 'ProductsController@update')->name('product.update');;
-Route::get('/product/show{id}', 'ProductsController@show')->name('product.show');;
-Route::get('/product/delete{id}', 'ProductsController@destroy')->name('product.delete');;
-Route::get('/product/search', 'ProductsController@search')->name('product.search');;
+Route::get('/product/create', 'ProductsController@create')->name('product.create');
+Route::post('/product/create', 'ProductsController@store')->name('product.store');
+Route::get('/product/edit{id}', 'ProductsController@edit')->name('product.edit');
+Route::get('/product/update{id}', 'ProductsController@update')->name('product.update');
+Route::get('/product/show{id}', 'ProductsController@show')->name('product.show');
+Route::get('/product/delete{id}', 'ProductsController@destroy')->name('product.delete');
+Route::get('/product/search', 'ProductsController@search')->name('product.search');
 
 
 // user
