@@ -59,16 +59,18 @@
                     </div>
                 </div>
                 <div class="row">
+                    @foreach($product as $p)
                     <div class="col-md-6 col-xl-3">
                         <div class="card-box product-box">
                             <div class="bg-light">
-                                <img src="{{asset('Frontend/assets/images/products/clothes/product-9-1.jpg')}}" alt="product-pic" class="img-fluid">
+                               <a href="{{url('/frontend/detail{id}')}}"><img src="{{asset('Frontend/assets/images/products/clothes/product-9-1.jpg')}}" alt="product-pic" class="img-fluid"></a>
                             </div>
 
                             <div class="product-info">
                                 <div class="row align-items-center">
+
                                     <div class="col">
-                                        <h5 class="font-16 mt-0 sp-line-1"><a href="{{url('/home/frontend/detail')}}" class="text-dark">Jack & Jones Men's T-shirt</a> </h5>
+                                        <h5 class="font-16 mt-0 sp-line-1"><a href="{{url('/frontend/detail{id}')}}" class="text-dark">{{$p->product_name}}</a> </h5>
                                         <div class="text-warning mb-2 font-13">
                                             <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
                                             <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
@@ -76,97 +78,22 @@
                                             <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
                                             <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
                                         </div>
-                                        <h5 class="m-0"> <span class="text-muted"> Stocks : 98 pcs</span></h5>
+{{--                                        <h5 class="m-0"> <span class="text-muted"> Stocks : {{$p->price}} pcs</span></h5>--}}
                                     </div>
+
                                     <div class="col-auto">
-                                        <h4 class="text-danger text-uppercase">20 % Off</h4>
+                                        <h4 class="text-danger text-uppercase">{{$p->discount}} % Off</h4>
                                     </div>
                                 </div> <!-- end row -->
                             </div> <!-- end product info-->
                         </div> <!-- end card-box-->
                     </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card-box product-box">
-                            <div class="bg-light">
-                                <img src="{{asset('Frontend/assets/images/products/clothes/product-2.png')}}" alt="product-pic" class="img-fluid">
-                            </div>
-                            <div class="product-info">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h5 class="font-16 mt-0 sp-line-1"><a href="#" class="text-dark">Biblio Plastic Armchair</a> </h5>
-                                        <div class="text-warning mb-2 font-13">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                        </div>
-                                        <h5 class="m-0"> <span class="text-muted"> Stocks : 23 pcs</span></h5>
-                                    </div>
-                                    <div class="col-auto">
-                                        <h4 class="text-danger text-uppercase">40 % Off</h4>
-                                    </div>
-                                </div> <!-- end row -->
-                            </div> <!-- end product info-->
-                        </div> <!-- end card-box-->
-                    </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card-box product-box">
-                            <div class="bg-light">
-                                <img src="{{asset('Frontend/assets/images/products/clothes/product-3.png')}}" alt="product-pic" class="img-fluid">
-                            </div>
-
-                            <div class="product-info">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h5 class="font-16 mt-0 sp-line-1"><a href="#" class="text-dark">Amazing Modern Chair</a> </h5>
-                                        <div class="text-warning mb-2 font-13">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                        </div>
-                                        <h5 class="m-0"> <span class="text-muted"> Stocks : 235 pcs</span></h5>
-                                    </div>
-                                    <div class="col-auto">
-                                        <h4 class="text-danger text-uppercase">50 % Off</h4>
-                                    </div>
-                                </div> <!-- end row -->
-                            </div> <!-- end product info-->
-                        </div> <!-- end card-box-->
-                    </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card-box product-box">
-                            <div class="bg-light">
-                                <img src="{{asset('Frontend/assets/images/products/clothes/product-4.png')}}" alt="product-pic" class="img-fluid">
-                            </div>
-
-                            <div class="product-info">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h5 class="font-16 mt-0 sp-line-1"><a href="#" class="text-dark">Designer Awesome Chair</a> </h5>
-                                        <div class="text-warning mb-2 font-13">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                        </div>
-                                        <h5 class="m-0"> <span class="text-muted"> Stocks : 385 pcs</span></h5>
-                                    </div>
-                                    <div class="col-auto">
-                                        <h4 class="text-danger text-uppercase">25 % Off</h4>
-                                    </div>
-                                </div> <!-- end row -->
-                            </div> <!-- end product info-->
-                        </div> <!-- end card-box-->
-                    </div> <!-- end col-->
+                    @endforeach
                 </div>
                 <!-- end row-->
+                <div style="display: flex;justify-content: flex-end">
+                    {{ $product->links() }}
+                </div>
             </div>
 
             <!-- ============================================================== -->
