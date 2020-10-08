@@ -9,6 +9,7 @@ use App\Models\brands;
 use App\Models\companies;
 use App\Models\sizes;
 
+use Illuminate\Support\Facades\DB;
 use Storage;
 
 class ProductsController extends Controller
@@ -47,8 +48,11 @@ class ProductsController extends Controller
     }
 
     public function detail($id){
-        $product = products::find($id);
-        return view('Frontend.page.detail', compact('product'));
+        $product = products::where('id',1);
+        $name = $product->id;
+//        $product = DB::table('products')->get();
+        dd($name);
+        return view('Frontend.page.detail')->with('product',$product);
     }
 
 
@@ -105,7 +109,8 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = products::find($id);
-        return view('Backend/manage-promotion/show', compact('product'));
+        $category = categories::find($id);
+        return view('Backend/manage-promotion/show', compact('product','category'));
     }
 
     /**

@@ -58,7 +58,9 @@
                         <div class="col-lg-7">
                             <div class="pl-xl-3 mt-3 mt-xl-0">
                                 <a href="#" class="text-primary">Jack &amp; Jones</a>
-                                <h4 class="mb-3">{{ $product->product_name}}</h4>
+{{--                                @foreach($product as $pro)--}}
+                                <h4 class="mb-3">{{$product->product_name}}</h4>
+{{--                                @endforeach--}}
                                 <p class="text-muted float-left mr-3">
                                     <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
                                     <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
