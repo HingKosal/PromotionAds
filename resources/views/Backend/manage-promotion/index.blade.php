@@ -43,6 +43,7 @@
                                                             <tr style="width: 100%">
                                                                 <th>Promotion ID</th>
                                                                 <th>Product Name</th>
+                                                                <th>Image</th>
                                                                 <th>Price</th>
                                                                 <th>Discount</th>
                                                                 <th>Category</th>
@@ -57,6 +58,7 @@
 
                                                         <td>{{$p->id}}</td>
                                                         <td>{{$p->product_name}}</td>
+                                                        <td><img src="{{asset('storage/image/'.$p->image)}}" alt="" title=""></td>
                                                         <td>{{$p->price}}</td>
                                                         <td>{{$p->discount}}</td>
                                                         <td>{{$p->category_id}}</td>
