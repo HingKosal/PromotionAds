@@ -31,36 +31,11 @@
                                     <img src="{{asset('Frontend/assets/images/products/clothes/product-12.jpg')}}" alt="" class="img-fluid mx-auto d-block rounded">
                                 </div>
                             </div>
-
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="nav-item">
-                                    <a href="#product-1-item" data-toggle="tab" aria-expanded="false" class="nav-link product-thumb active show">
-                                        <img src="{{asset('Frontend/assets/images/products/clothes/product-9.jpg')}}" alt="" class="img-fluid mx-auto d-block rounded">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#product-2-item" data-toggle="tab" aria-expanded="true" class="nav-link product-thumb">
-                                        <img src="{{asset('Frontend/assets/images/products/clothes/product-10.jpg')}}" alt="" class="img-fluid mx-auto d-block rounded">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#product-3-item" data-toggle="tab" aria-expanded="false" class="nav-link product-thumb">
-                                        <img src="{{asset('Frontend/assets/images/products/clothes/product-11.jpg')}}" alt="" class="img-fluid mx-auto d-block rounded">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#product-4-item" data-toggle="tab" aria-expanded="false" class="nav-link product-thumb">
-                                        <img src="{{asset('Frontend/assets/images/products/clothes/product-12.jpg')}}" alt="" class="img-fluid mx-auto d-block rounded">
-                                    </a>
-                                </li>
-                            </ul>
                         </div> <!-- end col -->
                         <div class="col-lg-7">
                             <div class="pl-xl-3 mt-3 mt-xl-0">
                                 <a href="#" class="text-primary">Jack &amp; Jones</a>
-{{--                                @foreach($product as $pro)--}}
                                 <h4 class="mb-3">{{$product->product_name}}</h4>
-{{--                                @endforeach--}}
                                 <p class="text-muted float-left mr-3">
                                     <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
                                     <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
@@ -69,29 +44,12 @@
                                     <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
                                 </p>
                                 <p class="mb-4"><a href="#" class="text-muted">( 36 Customer Reviews )</a></p>
-{{--                                <h6 class="text-danger text-uppercase">{{ $product->discount }} </h6>--}}
-                                <h4 class="mb-4">Price : <span class="text-muted mr-2"><del>$80 USD</del></span> <b>$64 USD</b></h4>
+                                <h6 class="text-danger text-uppercase">{{ $product->discount }}% </h6>
+                                <h4 class="mb-4">Price : <span class="text-muted mr-2"><del>{{ ($product->price)}}$</del></span> <b>{{$product->price - ($product->price * $product->discount / 100)}}$</b></h4>
                                 <h4><span class="badge bg-soft-success text-success mb-4">Instock</span></h4>
                                 <p class="text-muted mb-4">The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators.</p>
                                 <form class="form-inline mb-4">
-                                    <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                    <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                    </select>
-
                                     <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                    <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                        <option selected="">Small</option>
-                                        <option value="1">Medium</option>
-                                        <option value="2">Large</option>
-                                        <option value="3">X-large</option>
-                                    </select>
                                 </form>
 
                                 <div class="row mb-3">
@@ -110,91 +68,6 @@
                         </div> <!-- end col -->
                     </div>
                     <!-- end row -->
-
-
-                    <!--                    <div class="table-responsive mt-4">-->
-                    <!--                        <table class="table table-bordered table-centered mb-0">-->
-                    <!--                            <thead class="thead-light">-->
-                    <!--                            <tr>-->
-                    <!--                                <th>Outlets</th>-->
-                    <!--                                <th>Price</th>-->
-                    <!--                                <th>Stock</th>-->
-                    <!--                                <th>Revenue</th>-->
-                    <!--                            </tr>-->
-                    <!--                            </thead>-->
-                    <!--                            <tbody>-->
-                    <!--                            <tr>-->
-                    <!--                                <td>ASOS Ridley Outlet - NYC</td>-->
-                    <!--                                <td>$139.58</td>-->
-                    <!--                                <td>-->
-                    <!--                                    <div class="row align-items-center no-gutters">-->
-                    <!--                                        <div class="col-auto">-->
-                    <!--                                            <span class="mr-2">27%</span>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="col">-->
-                    <!--                                            <div class="progress progress-sm">-->
-                    <!--                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 27%" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100"></div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </td>-->
-                    <!--                                <td>$1,89,547</td>-->
-                    <!--                            </tr>-->
-                    <!--                            <tr>-->
-                    <!--                                <td>Marco Outlet - SRT</td>-->
-                    <!--                                <td>$149.99</td>-->
-                    <!--                                <td>-->
-                    <!--                                    <div class="row align-items-center no-gutters">-->
-                    <!--                                        <div class="col-auto">-->
-                    <!--                                            <span class="mr-2">71%</span>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="col">-->
-                    <!--                                            <div class="progress progress-sm">-->
-                    <!--                                                <div class="progress-bar bg-success" role="progressbar" style="width: 71%" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100"></div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </td>-->
-                    <!--                                <td>$87,245</td>-->
-                    <!--                            </tr>-->
-                    <!--                            <tr>-->
-                    <!--                                <td>Chairtest Outlet - HY</td>-->
-                    <!--                                <td>$135.87</td>-->
-                    <!--                                <td>-->
-                    <!--                                    <div class="row align-items-center no-gutters">-->
-                    <!--                                        <div class="col-auto">-->
-                    <!--                                            <span class="mr-2">82%</span>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="col">-->
-                    <!--                                            <div class="progress progress-sm">-->
-                    <!--                                                <div class="progress-bar bg-success" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </td>-->
-                    <!--                                <td>$5,87,478</td>-->
-                    <!--                            </tr>-->
-                    <!--                            <tr>-->
-                    <!--                                <td>Nworld Group - India</td>-->
-                    <!--                                <td>$159.89</td>-->
-                    <!--                                <td>-->
-                    <!--                                    <div class="row align-items-center no-gutters">-->
-                    <!--                                        <div class="col-auto">-->
-                    <!--                                            <span class="mr-2">42%</span>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="col">-->
-                    <!--                                            <div class="progress progress-sm">-->
-                    <!--                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </td>-->
-                    <!--                                <td>$55,781</td>-->
-                    <!--                            </tr>-->
-                    <!--                            </tbody>-->
-                    <!--                        </table>-->
-                    <!--                    </div>-->
-
                 </div> <!-- end card-->
             </div> <!-- end col-->
         </div>

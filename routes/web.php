@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 // frontend
 Route::get('', 'ProductsController@product');
+Route::get('/filter', 'ProductsController@filter')->name('filter');
+Route::get('/detail{id}', 'ProductsController@detail')->name('detail');
 Route::get('/frontend/about', function () {
     return view('Frontend.page.about');
 });
@@ -21,13 +23,6 @@ Route::get('/frontend/about', function () {
 // Contact
 Route::get('/contact', 'ContactsController@index')->name('contact');
 Route::post('/contact/create', 'ContactsController@store')->name('contact.store');
-
-Route::get('/frontend/detail{id}', 'ProductsController@detail');
-
-
-//Route::get('/dashboard', function () {
-//    return view('Backend.Dashboard.dashboard1');
-//});
 
 Route::get('/dashboard', 'DashboardController@count')->name('dashboard');
 

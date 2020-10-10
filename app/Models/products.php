@@ -18,4 +18,8 @@ class products extends Model
         'company_id'
 ];
     protected $primaryKey = 'id';
+
+    public static function where(string $string, string $string1, string $string2)
+    {
+    }
 }

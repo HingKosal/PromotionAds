@@ -47,12 +47,22 @@ class ProductsController extends Controller
         return view('Frontend.page.index',compact('product'));
     }
 
+    public function filter(Request $request)
+    {
+        $search = $request->get('search');
+        $product = products::where('product_name', 'LIKE', '%'.$search.'%');
+        return view ('Frontend.page.index', compact('product'));
+    }
+
     public function detail($id){
-        $product = products::where('id',1);
-        $name = $product->id;
-//        $product = DB::table('products')->get();
-        dd($name);
-        return view('Frontend.page.detail')->with('product',$product);
+        $product = DB::table('products')->find($id);
+        return view('Frontend.page.detail',compact('product'));
+
+        $price = $product->price;
+        $discount = $product->discount;
+
+        $total = $price * $discount / 100;
+        $grandTotal = $price - $total;
     }
 
 

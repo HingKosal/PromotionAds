@@ -10,7 +10,7 @@
                     <div class="contact">
                         <div class="email">
                             <h4 class="text-info"><i class='far fa-envelope' > Business Email</i></h4>
-                            <button class="btn-primary">promotionads2020@gmail.com/kh (promotionads2020@gmail.com/kh)</button>
+                            <button class="btn-primary">promotionads2020@gmail.com/kh</button>
                         </div>
                         <div class="phone">
                             <h4 class="text-info"><i class='fas fa-phone'> Business Number</i></h4>
