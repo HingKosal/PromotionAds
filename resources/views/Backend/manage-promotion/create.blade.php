@@ -15,7 +15,7 @@
                     <div class="card-content collpase show">
                         <div class="card-body">
                             <div class="card-body">
-                                <form method="POST" action="{{route('product.store') }}">
+                                <form method="POST" action="{{route('product.store') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-body">
 
@@ -23,7 +23,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control @error('product_name') is-invalid @enderror" placeholder="product name" name="product_namess">
+                                            <input type="text" class="form-control @error('product_name') is-invalid @enderror" placeholder="product name" name="product_name">
                                         </div>
                                     </div>
 
@@ -78,14 +78,6 @@
                                         </div>
                                     </div>
 
-                                    {{-- Image --}}
-                                    {{-- <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Image: </label>
-                                        <div class="col-md-5">
-                                            <input type="file" id="projectinput1" class="custom-file-input" name="image">
-                                            <label class = "custom-file-label" style="margin-left: 15px; margin-right: 15px;">Choose file</label>
-                                        </div>
-                                    </div> --}}
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput1">Image: </label>
                                         <div class="col-md-5">
@@ -118,22 +110,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    {{-- Location --}}
-                                    {{-- <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Location: </label>
-                                        <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('location') is-invalid @enderror" placeholder=" location" name="location">
-                                        </div>
-                                    </div> --}}
-
-                                    {{-- Phone --}}
-                                    {{-- <div class="form-group row">
-                                        <label class="col-md-3 label-control" for="projectinput1">Phone: </label>
-                                        <div class="col-md-5">
-                                            <input type="text" id="projectinput1" class="form-control @error('phone') is-invalid @enderror" placeholder=" phone" name="phone">
-                                        </div>
-                                    </div> --}}
 
                                 </div>
                                 <div class="form-actions">

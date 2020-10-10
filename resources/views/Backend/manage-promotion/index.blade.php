@@ -58,7 +58,7 @@
 
                                                         <td>{{$p->id}}</td>
                                                         <td>{{$p->product_name}}</td>
-                                                        <td><img src="{{asset('storage/image/'.$p->image)}}" alt="" title=""></td>
+                                                        <td><img src="{{asset('storage/image/'.$p->image)}}" alt="" title="" width="100px"></td>
                                                         <td>{{$p->price}}</td>
                                                         <td>{{$p->discount}}</td>
                                                         <td>{{$p->category_id}}</td>

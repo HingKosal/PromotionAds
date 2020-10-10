@@ -74,39 +74,42 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate( $request,
-           [
-            'product_namess' => 'required',
-            'category' => 'required',
-            'brand' => 'required',
-            'price' => 'required',
-            'discount' => 'required',
-            'description',
-            'image',
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'size' => 'required',
-            'company' => 'required'
-           ]
-           );
+        $this->validate( $request,
+        [
+         'product_name' => 'required',
+         'category' => 'required',
+         'brand' => 'required',
+         'price' => 'required',
+         'discount' => 'required',
+         'description',
+         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         'size' => 'required',
+         'company' => 'required'
+        ]
+        );
 
-           $product = new products([
-               'product_name' => $request->get('product_namess'),
-               'category_id' => $request->get('category'),
-               'brand_id' => $request->get('brand'),
-               'price' => $request->get('price'),
-               'discount' => $request->get('discount'),
-               'description' => $request->get('description'),
-               'image' => $request->get('image'),
-               'size_id' => $request->get('size'),
-               'company_id' => $request->get('company')
+     if ($request->hasFile('image')) {
+         if($request->file('image')->isValid()) {
+             $image = $request->file('image');
+             $new_name = date('YmdHis').'.'.$image->getClientOriginalExtension();
+             $image->move(public_path("storage/image"), $new_name);
 
-           ]);
+             $product = new products();
+             $product->product_name = $request-> product_name;
+             $product->category_id = $request-> category;
+             $product->brand_id = $request-> brand;
+             $product->price = $request-> price;
+             $product->discount = $request-> discount;
+             $product->description = $request-> description;
+             $product->image = $new_name;
+             $product->size_id = $request-> size;
+             $product->company_id = $request-> company;
 
-           //    Not working with the upload picture yet
 
-
-           $product->save();
-           return redirect()->route('product');
+             $product->save();
+             return redirect()->route('product');
+         }
+        }
 
     }
 
