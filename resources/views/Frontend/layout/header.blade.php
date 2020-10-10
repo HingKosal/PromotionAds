@@ -131,7 +131,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle arrow-none" href="{{url('/frontend/contact')}}" style="font-size: 20px; margin-top: -10px; color: white">
+                            <a class="nav-link dropdown-toggle arrow-none" href="{{route('contact')}}" style="font-size: 20px; margin-top: -10px; color: white">
                                 Contact
                             </a>
                         </li>

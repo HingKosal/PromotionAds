@@ -17,9 +17,14 @@ Route::get('', 'ProductsController@product');
 Route::get('/frontend/about', function () {
     return view('Frontend.page.about');
 });
-Route::get('/frontend/contact', function () {
-    return view('Frontend.page.contact');
-});
+// Route::get('/frontend/contact', function () {
+//     return view('Frontend.page.contact');
+// });
+
+// Contact
+Route::get('/contact', 'ContactsController@index')->name('contact');
+Route::post('/contact/create', 'ContactsController@store')->name('contact.store');
+
 Route::get('/frontend/detail{id}', 'ProductsController@detail');
 
 
@@ -96,7 +101,6 @@ Route::get('/user/edit{id}','UsersController@edit')->name('user.edit');
 Route::get('/user/update{id}','UsersController@update')->name('user.update');
 Route::get('/user/delete{id}','UsersController@destroy')->name('user.delete');
 Route::get('/user/search', 'UsersController@search')->name('user.search');
-
 
 
 

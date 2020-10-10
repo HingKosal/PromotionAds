@@ -1,68 +1,112 @@
-.container .content .main .text-success{
-  border-bottom: 1px solid gray;
-  width: 15%;
-  margin: 50px;
+.container {
+    width: 1100px;
 }
-.container .content .main p{
-  font-style: italic;
-  margin-left: 100px;
+
+.container .content {
+    width: 100%;
 }
-hr{
-  background-color: red;
+
+.container .content .wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
 }
-.container .content .contact{
-  margin-top: 70px;
-  margin-left: 200px;
+
+.container .content .wrapper .main {
+    width: 40%;
 }
-.container .content .contact button{
-  margin: 20px 150px;
-  border-radius: 2px;
+
+.container .content .wrapper .main p {}
+
+.container .content .wrapper .contact {
+    margin: 20px 0;
 }
-.container .content .contact .social-icon{
-  margin: 20px 150px;
+
+.container .content .wrapper .contact button {
+    border: none;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 20px 0;
 }
+
+.container .content .wrapper .contact .social-icon {
+    display: flex;
+}
+
 .fa {
-  padding: 20px;
-  font-size: 25px;
-  width: 65px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
+    padding: 20px;
+    font-size: 25px;
+    width: 65px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
 }
 
 .fa:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 .fa-facebook {
-  background: #3B5998;
-  color: white;
+    background: #3B5998;
+    color: white;
 }
 
 .fa-twitter {
-  background: #55ACEE;
-  color: white;
+    background: #55ACEE;
+    color: white;
 }
+
 .fa-linkedin {
-  background: #007bb5;
-  color: white;
+    background: #007bb5;
+    color: white;
 }
-.error{
-  color: red;
-  margin: 0px 300px;
+
+.error {
+    color: red;
+    margin: 0px 300px;
 }
-.success{
-  color: green;
+
+.success {
+    color: green;
 }
-.message .text-success{
-  margin: 50px;
-  text-align: center;
+
+.message {
+    width: 50%;
+    box-shadow: 0 3px 10px 0 #dcdcdc;
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #f2474b);
+    border-radius: 10px;
 }
-.message .form-control, .message textarea, .message button{
-  margin: 0px 300px;
-  width: 50%;
+
+.message .text-success {
+    text-align: center;
 }
-.message label{
-  margin: 0px 200px;
+
+.message form .form-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.message form .form-group input {
+    border: none;
+    width: 70%;
+}
+
+.message form .form-group textarea {
+    border: none;
+    padding: 10px 15px;
+    width: 70%;
+    border-radius: 5px;
+}
+
+.message form .form-group textarea:focus {
+    outline: none;
+}
+
+.message form button {
+    float: right;
+    width: 65%;
+    margin: 20px;
+    border-radius: 5px;
 }
