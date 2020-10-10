@@ -1,123 +1,163 @@
 @extends('Backend.layout.master')
 @section('content')
-    <section id="horizontal-form-layouts" style="margin-left: 290px">
+<div>
+    <a href="{{route('product')}}" type="button" class="btn btn-primary"> Back </a>
+</div>
+    <section id="horizontal-form-layouts" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+
                     <div class="card-header">
-                        <h2>Update Product</h2>
+                        <h2>Update Promotion Product</h2>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     </div>
                     <div class="card-content collpase show">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="{{route('product.update', $product->id)}}" method="post">
+                            <div class="card-body">
+                                <form method="GET" action="{{route('product.update', $product->id)}}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
                                 <div class="form-body">
-                                    <div class="form-body">
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
-                                            <div class="col-md-5">
-                                                <input type="text" class="form-control @error('product_name') is-invalid @enderror" value="{{$product->product_name}}" placeholder="product name" name="product_name">
-                                            </div>
+
+                                    {{-- product name --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Product Name: </label>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control @error('product_name') is-invalid @enderror" value="{{$product->product_name}}" placeholder="product name" name="product_name">
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Category : </label>
-                                            <div class="col-md-5">
-                                                <select name="category" class="form-control">
-                                                    @foreach($category as $categories)
-                                                    <option value="{{$categories->id}}" {{old('id')==$categories->id? 'selected' : ''}}>{{$categories->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    {{-- Category id --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Category: </label>
+                                        <div class="col-md-5">
+                                            <select name="category" class="form-control">
+
+                                                {{-- Current Category --}}
+                                                @foreach ($category as $categories1)
+                                                   @if ($product->category_id == $categories1->id)
+                                                       <option value="{{$product->category_id}}">{{$categories1->title}}</option>
+                                                   @endif
+                                                @endforeach
+
+                                                {{-- Update Category --}}
+                                                @foreach($category as $categories)
+                                                <option value="{{$categories->id}}">{{$categories->title}}</option>
+                                                @endforeach
+
+                                            </select>
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Brand : </label>
-                                            <div class="col-md-5">
-                                                <select name="brand" class="form-control">
-                                                    @foreach($brand as $brands)
-                                                    <option value="{{$brands->id}}" {{old('id')==$brands->id? 'selected' : ''}}>{{$brands->brand_name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    {{-- Brand id --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Brand: </label>
+                                        <div class="col-md-5">
+                                            <select name="brand" class="form-control">
+                                                {{-- Current Brand id --}}
+                                                @foreach ($brand as $brands1)
+                                                   @if ($product->brand_id == $brands1->id)
+                                                       <option value="{{$product->brand_id}}">{{$brands1->brand_name}}</option>
+                                                   @endif
+                                                @endforeach
+
+                                                @foreach($brand as $brands)
+                                                <option value="{{$brands->id}}">{{$brands->brand_name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Price: </label>
-                                            <div class="col-md-5">
-                                                <input type="text" id="projectinput1" class="form-control @error('price') is-invalid @enderror" value="{{$product->price}}" placeholder=" price" name="price">
-                                            </div>
+                                    {{-- Price --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Price: </label>
+                                        <div class="col-md-5">
+                                            <input type="text" id="projectinput1" class="form-control @error('price') is-invalid @enderror" value="{{$product->price}}" placeholder=" price" name="price">
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row">
+                                    {{-- Discount --}}
+                                    <div class="form-group row">
 
-                                            <label class="col-md-3 label-control" for="projectinput1">Discount: </label>
-                                            <div class="col-md-5">
-                                                <input type="text" id="projectinput1" class="form-control @error('discount') is-invalid @enderror" value="{{$product->discount}}" placeholder=" discount" name="discount">
-                                            </div>
+                                        <label class="col-md-3 label-control" for="projectinput1">Discount: </label>
+                                        <div class="col-md-5">
+                                            <input type="text" id="projectinput1" class="form-control @error('discount') is-invalid @enderror" value="{{$product->discount}}"placeholder=" discount" name="discount">
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Description</label>
-                                            <div class="col-md-5">
-                                                <textarea name="description" id="projectinput1" cols="70" rows="4" value="{{$product->description}}"></textarea>
-                                            </div>
+                                    {{-- Description --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Description: </label>
+                                        <div class="col-md-5">
+                                        <textarea name="description" id="projectinput1" style="width: 100%" rows="4" >
+                                            {{ old('description', $product->description) }}
+                                        </textarea>
                                         </div>
+                                    </div>
 
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Image: </label>
-                                            <div class="col-md-5">
-                                                <input type="file" id="projectinput1" class="custom-file-input" value="{{$product->image}}" placeholder=" image" name="image">
-                                                <label class = "custom-file-label">Choose file</label>
-                                            </div>
+                                    {{-- Image --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Image: </label>
+                                        <div style="margin-left: 15px;width: 300px; height: 300px; border:1px solid; text-align: center;">
+                                            <img src="{{asset('storage/image/'.$product->image)}}" alt="No Image Post" height="100%">
                                         </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Size : </label>
-                                            <div class="col-md-5">
-                                                <select name="size" class="form-control">
-                                                    @foreach($size as $s)
-                                                    <option value="{{$s->id}}" {{old('id')==$s->id? 'selected' : ''}}>{{$s->size_name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Upload New Image: </label>
+                                        <div class="col-md-5">
+                                            <input type="file" name="image" class="form-control" place>
                                         </div>
+                                    </div>
 
+                                    {{-- Size id --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Size: </label>
+                                        <div class="col-md-5">
+                                            <select name="size" class="form-control">
 
+                                                {{-- Current size --}}
+                                                @foreach ($size as $sizes1)
+                                                   @if ($product->size_id == $sizes1->id)
+                                                       <option value="{{$product->size_id}}">{{$sizes1->size_name}}</option>
+                                                   @endif
+                                                @endforeach
 
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Company Name: </label>
-                                            <div class="col-md-5">
-                                                <input type="text" id="projectinput1" class="form-control @error('company_name') is-invalid @enderror" value="{{$product->company_name}}" placeholder=" company name" name="company_name">
-                                            </div>
+                                                @foreach($size as $sizes)
+                                                <option value="{{$sizes->id}}">{{$sizes->size_name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Location: </label>
-                                            <div class="col-md-5">
-                                                <input type="text" id="projectinput1" class="form-control @error('location') is-invalid @enderror" value="{{$product->location}}" placeholder=" location" name="location">
-                                            </div>
+                                    {{-- Company id --}}
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput1">Company Name: </label>
+                                        <div class="col-md-5">
+                                            <select name="company" class="form-control">
+
+                                                {{-- Current Company --}}
+                                                @foreach ($company as $companies1)
+                                                   @if ($product->company_id == $companies1->id)
+                                                       <option value="{{$product->company_id}}">{{$companies1->company_name}}</option>
+                                                   @endif
+                                                @endforeach
+
+                                                @foreach($company as $companies)
+                                                <option value="{{$companies->id}}">{{$companies->company_name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 label-control" for="projectinput1">Phone: </label>
-                                            <div class="col-md-5">
-                                                <input type="text" id="projectinput1" class="form-control @error('phone') is-invalid @enderror" value="{{$product->phone}}" placeholder=" phone" name="phone">
-                                            </div>
-                                        </div>
-
+                                    </div>
 
                                 </div>
                                 <div class="form-actions">
-                                    <button type="button" class="btn btn-warning mr-1">
-                                        <a href="{{url('/product')}}"><i class="ft-x"></i>Cancel</a>
+                                    <button type="button" class="btn btn-danger">
+                                        <a href="{{url('/product')}}"><i class="la la-close"></i>Cancel</a>
+
                                     </button>
                                     <button type="submit" name="create" class="btn btn-primary">
                                         <i class="la la-check-square-o"></i> Update
                                     </button>
-                                </div>
                                 </div>
                             </form>
                         </div>
@@ -127,4 +167,4 @@
         </div>
     </section>
 
-@endsection
+    @endsection

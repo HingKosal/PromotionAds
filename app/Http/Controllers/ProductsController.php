@@ -135,11 +135,12 @@ class ProductsController extends Controller
     public function edit($id)
     {
 
-        $product = products::find($id);
         $category = categories::all(['id','title']);
         $brand = brands::all(['id','brand_name']);
         $size = sizes::all(['id','size_name']);
-        return view('Backend/manage-promotion/edit', compact('product','category','brand','size'));
+        $company = companies::all(['id','company_name','location','phone']);
+        $product = products::find($id);
+        return view('Backend/manage-promotion/edit', compact('category','brand','size','company','product'));
     }
 
     /**
@@ -158,23 +159,36 @@ class ProductsController extends Controller
             'brand' => 'required',
             'price' => 'required',
             'discount' => 'required',
-            'description' => 'required',
-            'image' => 'required',
             'size' => 'required',
+            'image',
+            'company' => 'required',
 
            ]
            );
-           $product = products::find($id);
-           $product ->product_name = $request->product_name;
-           $product ->category = $request->category;
-           $product ->brand = $request->brand;
-           $product ->price = $request->price;
-           $product ->discount = $request->discount;
-           $product ->description = $request->description;
-           $product ->image = $request->image;
-           $product ->size = $request->size;
-           $product->save();
-           return redirect()->route('product');
+
+           $product=products::findOrFail($id);
+           $product->update($request->all());
+
+        //    if ($request->hasFile('image')) {
+        //     if($request->file('image')->isValid()) {
+        //         $image = $request->file('image');
+        //         $new_name = date('YmdHis').'.'.$image->getClientOriginalExtension();
+        //         $image->move(public_path("storage/image"), $new_name);
+        //         $product->image = $new_name;
+        //     }
+        //    }
+            // $product = products::find($id);
+            $product ->product_name = $request->product_name;
+            $product ->category_id = $request->category;
+            $product ->brand_id = $request->brand;
+            $product ->price = $request->price;
+            $product ->discount = $request->discount;
+            $product ->description = $request->description;
+            $product ->size_id = $request->size;
+            $product ->company_id = $request->company;
+
+            $product->save();
+            return redirect()->route('product');
 
 
     }
