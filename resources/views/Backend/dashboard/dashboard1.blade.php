@@ -16,8 +16,7 @@
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
                                                     <h6 class="text-muted">All Customer </h6>
-                                                    
-                                                    <h3>68</h3>
+                                                    <h3>{{$user->count()}}</h3>
                                                 </div>
                                                 <div class="align-self-center">
                                                     <i class="icon-trophy success font-large-2 float-right"></i>
@@ -35,7 +34,7 @@
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
                                                     <h6 class="text-muted">Products List</h6>
-                                                    <h3>3,568</h3>
+                                                    <h3>{{$product->count()}}</h3>
                                                 </div>
                                                 <div class="align-self-center">
                                                     <i class="icon-call-in danger font-large-2 float-right"></i>
@@ -53,7 +52,7 @@
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
                                                     <h6 class="text-muted">Companies</h6>
-                                                    <h3>3,568</h3>
+                                                    <h3>{{$company->count()}}</h3>
                                                 </div>
                                                 <div class="align-self-center">
                                                     <i class="icon-call-in danger font-large-2 float-right"></i>
@@ -88,7 +87,6 @@
                                             <th class="border-top-0">Customers</th>
                                             <th class="border-top-0">Categories</th>
                                             <th class="border-top-0">Popularity</th>
-                                            <th class="border-top-0">Amount</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -118,7 +116,6 @@
                                                     <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </td>
-                                            <td class="text-truncate">$ 1200.00</td>
                                         </tr>
                                         <tr>
                                             <td class="text-truncate">Dacing Shoes</td>
@@ -143,7 +140,6 @@
                                                     <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </td>
-                                            <td class="text-truncate">$ 1190.00</td>
                                         </tr>
                                         <tr>
                                             <td class="text-truncate">Black_Converse</td>
@@ -171,7 +167,6 @@
                                                     <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </td>
-                                            <td class="text-truncate">$ 999.00</td>
                                         </tr>
                                         <tr>
                                             <td class="text-truncate">Jack & Jones Men's T-shirt</td>
@@ -193,7 +188,6 @@
                                                     <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </td>
-                                            <td class="text-truncate">$ 1150.00</td>
                                         </tr>
                                         <tr>
                                             <td class="text-truncate">Vector_shoes</td>
@@ -215,7 +209,6 @@
                                                     <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </td>
-                                            <td class="text-truncate">$ 1180.00</td>
                                         </tr>
                                         </tbody>
                                     </table>

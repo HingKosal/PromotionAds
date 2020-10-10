@@ -17,9 +17,6 @@ Route::get('', 'ProductsController@product');
 Route::get('/frontend/about', function () {
     return view('Frontend.page.about');
 });
-// Route::get('/frontend/contact', function () {
-//     return view('Frontend.page.contact');
-// });
 
 // Contact
 Route::get('/contact', 'ContactsController@index')->name('contact');
@@ -28,9 +25,11 @@ Route::post('/contact/create', 'ContactsController@store')->name('contact.store'
 Route::get('/frontend/detail{id}', 'ProductsController@detail');
 
 
-Route::get('/dashboard', function () {
-    return view('Backend.Dashboard.dashboard1');
-});
+//Route::get('/dashboard', function () {
+//    return view('Backend.Dashboard.dashboard1');
+//});
+
+Route::get('/dashboard', 'DashboardController@count')->name('dashboard');
 
 // category
 Route::get('/category', 'CategoriesController@index')->name('category');
