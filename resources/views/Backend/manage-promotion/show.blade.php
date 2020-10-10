@@ -10,7 +10,8 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <img src="{{ URL::to('/') }}/images/{{ $product->image }}" class="img-thumbnail" />
+{{--                <img src="{{ URL::to('public/') }}/images/{{ $product->image }}" class="img-thumbnail" />--}}
+                <img src="{{asset('storage/image/'.$product->image)}}" alt="" title="">
             </div>
         </div>
     </div>
