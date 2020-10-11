@@ -56,7 +56,7 @@
                                                                 <a class="btn btn-warning btn-sm" href="{{route('password.request')}}" role="button">reset password</a>
                                                                 <a class="btn btn-primary btn-sm" href="{{route('user.edit',$u->id)}}" role="button"><i class='la la-pencil'></i></a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" href="{{route('user.delete',$u->id)}}" role="button"><i class='la la-trash-o'></i></a>
-                                                                <a class="btn btn-secondary btn-sm" href="#" role="button"><i class='la la-eye'></i></a>
+                                                                <a class="btn btn-secondary btn-sm" href="{{route('user.view', $u->id)}}" role="button"><i class='la la-eye'></i></a>
                                                             </td>
                                                         </tr>
                                                         @endforeach

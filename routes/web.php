@@ -96,6 +96,7 @@ Route::post('/user/create', 'UsersController@store')->name('user.store');
 Route::get('/user/edit{id}','UsersController@edit')->name('user.edit');
 Route::get('/user/update{id}','UsersController@update')->name('user.update');
 Route::get('/user/delete{id}','UsersController@destroy')->name('user.delete');
+Route::get('/user/view{id}','UsersController@show')->name('user.view');
 Route::get('/user/search', 'UsersController@search')->name('user.search');
 
 
