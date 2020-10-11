@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2020 at 06:00 PM
+-- Generation Time: Oct 11, 2020 at 08:00 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -35,6 +35,15 @@ CREATE TABLE `brands` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `brand_name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Aliza', NULL, '2020-10-11 09:02:39', '2020-10-11 09:02:39'),
+(2, 'Adidas', NULL, '2020-10-11 09:49:45', '2020-10-11 09:49:45'),
+(3, 'Nize', NULL, '2020-10-11 09:49:54', '2020-10-11 09:49:54');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +58,15 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Shoes', NULL, '2020-10-11 08:16:15', '2020-10-11 08:16:15'),
+(2, 'Clothes', NULL, '2020-10-11 08:16:25', '2020-10-11 08:16:25'),
+(3, 'Accessories', NULL, '2020-10-11 08:16:44', '2020-10-11 08:16:44');
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +80,28 @@ CREATE TABLE `companies` (
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `company_name`, `location`, `phone`, `description`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Amazon', 'Phnom Penh, less than 1 km from Tuol Sleng Genocide Museum and 1.1 km from Royal Palace Phnom Penh', '969604049 / 66280228 / 129966100', 'Aliza have a lot of product sell', 1, '2020-10-11 09:02:27', '2020-10-11 09:02:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -105,7 +145,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2020_09_06_073947_create_sizes_table', 1),
 (6, '2020_10_02_160956_create_companies_table', 1),
 (7, '2020_10_02_161011_create_brands_table', 1),
-(8, '2020_10_02_164042_create_products_table', 1);
+(8, '2020_10_02_164042_create_products_table', 1),
+(9, '2020_10_10_100424_create_contacts_table', 1);
 
 -- --------------------------------------------------------
 
@@ -118,6 +159,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('keobora008@gmail.com', '$2y$10$iDT8J1HD6S4dY8YwpMGD4eTKrt5A/Zj9g6QtgKPwSsGJ1nzQjf7kq', '2020-10-11 10:04:03');
 
 -- --------------------------------------------------------
 
@@ -141,6 +189,14 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_name`, `category_id`, `brand_id`, `price`, `discount`, `description`, `image`, `size_id`, `company_id`, `published`, `created_at`, `updated_at`) VALUES
+(1, 'Jack & Jones Men\'s T-shirt (Blue)', 2, 1, '52', '50', 'This is A nice clothe in 2020', '20201011160451.png', 1, 1, NULL, '2020-10-11 09:04:51', '2020-10-11 09:04:51'),
+(2, 'Red Shoe', 1, 1, '15', '40', 'This is nice shoe in 2020', '20201011160535.png', 1, 1, NULL, '2020-10-11 09:05:35', '2020-10-11 09:05:35');
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +210,15 @@ CREATE TABLE `sizes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sizes`
+--
+
+INSERT INTO `sizes` (`id`, `size_name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Small', NULL, '2020-10-11 09:02:59', '2020-10-11 09:02:59'),
+(2, 'Big', NULL, '2020-10-11 09:51:26', '2020-10-11 09:51:26'),
+(3, 'Midium', NULL, '2020-10-11 09:51:40', '2020-10-11 09:51:40');
 
 -- --------------------------------------------------------
 
@@ -179,9 +244,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `remember_token`, `password`, `password_confirmation`, `created_at`, `updated_at`) VALUES
-(1, 'Heng', 'Kosal', 'Heng Kosal', 'hengkosal@gmail.com', NULL, '$2y$10$YW0b.OY0RChtJd.e1vQvQep2ZtuLlyCkcctffARb4j9UWSEHFKnbq', '$2y$10$64BZhiNdZY6mg6r6bdXIgewl6wQZ5arZa6FI10xugbI1cYE2mOZmC', '2020-10-03 05:07:23', '2020-10-03 05:07:23'),
-(2, 'System', 'Admin', 'System Admin', 'systemadmin@gmail.com', NULL, '$2y$10$sPLeJVPyOxfQrF6FaY4gouxgQS7QtZl8ICdGKdDHKWTPc3WT1jgbW', '$2y$10$G4XQV6Fmr10XxAP4aqQGxOcFxFCxClFXqgOiVaqILNq7LMo2dMyA.', '2020-10-03 05:08:13', '2020-10-03 05:08:40'),
-(4, 'kosal', 'Admin', 'System', 'system@gmail.com', NULL, '$2y$10$Ba0ir1ejHPuKnwrH5KqS5OA78oa/pgC9./m6ilF91XVA95mfG.Zkq', '$2y$10$YIJ3wKw0Jq/8M9Y3tpaXVO8LWtRCVpskYUdbDicgoSjptjT2cpIQe', '2020-10-05 00:39:49', '2020-10-05 00:39:49');
+(1, 'System', 'Admin', 'System Admin', 'systemadmin@gmail.com', NULL, '$2y$10$EPyRnNQRtSGZ.SS8289zU.2egubAW.t4ByJoC0KI3MVnPNlUZpUbO', '$2y$10$Sioi8fD54lxEEsw4IScZTOJd8h9xCotIvd/lG5OreEiqP7d5iPqGa', '2020-10-11 08:15:19', '2020-10-11 08:15:19'),
+(2, 'Keo', 'Bora', 'Keo Bora', 'keobora008@gmail.com', NULL, '$2y$10$zGyYw.ybe7Xilq/ts.xbMe729F.9chQV1sukXgsMWAzoBzv5IYg5y', '$2y$10$dy8gKPmpLoynWFa0U283PO6xyP7G6XR4uIGypPew.0An21egzzUx6', '2020-10-11 10:03:55', '2020-10-11 10:03:55');
 
 --
 -- Indexes for dumped tables
@@ -208,6 +272,12 @@ ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `companies_company_name_unique` (`company_name`),
   ADD KEY `companies_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -260,18 +330,24 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -284,25 +360,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

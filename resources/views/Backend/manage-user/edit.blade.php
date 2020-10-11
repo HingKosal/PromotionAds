@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Add New User</h2>
+                        <h2>Update User</h2>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     </div>
                     <div class="card-content collpase show">
