@@ -34,25 +34,13 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <!--            <a href="../templates/home.php" class="logo logo-dark text-center">-->
-            <!--                <span class="logo-sm">-->
-            <!--                    <img src="{{asset('')}}assets/images/ADS-Logo_RGB.png" alt="" height="22">-->
-            <!--                    &lt;!&ndash; <span class="logo-lg-text-light">UBold</span> &ndash;&gt;-->
-            <!--                </span>-->
-            <!--                <span class="logo-lg">-->
-            <!--                    <img src="{{asset('')}}assets/images/ADS-Logo_RGB.png" alt="" height="20">-->
-            <!--                    &lt;!&ndash; <span class="logo-lg-text-light">U</span> &ndash;&gt;-->
-            <!--                </span>-->
-            <!--            </a>-->
 
-            <a href="../templates/index.php" class="logo logo-light text-center">
-                <span>
-                    <img src="{{asset('')}}../Backend/app-assets/images/logo/logo.png" alt="" height="50" >
+            <a href="#" class="logo logo-light text-center">
+                <span style="display:flex; align-item:center; width:80px; height:70px; ">
+                    <img src="{{asset('frontend/assets/images/ADS-Logo_RGB.png')}}" alt="" height="100%" >
                 </span>
-                <!--                <span class="logo-lg">-->
-                <!--                    <img src="{{asset('')}}assets/images/ADS-Logo_RGB.png" alt="" height="100">-->
-                <!--                </span>-->
             </a>
+
         </div>
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
@@ -83,12 +71,6 @@
                             <a class="nav-link dropdown-toggle arrow-none" href="{{url('')}}" style="font-size: 20px; margin-top: -10px; color: white">
                                 Home
                             </a>
-                            <!--                            <div class="dropdown-menu active" aria-labelledby="topnav-dashboard">-->
-                            <!--                                <a href="#" class="dropdown-item active">General Sales</a>-->
-                            <!--                                <a href="dashboard-2.html" class="dropdown-item">Dashboard 2</a>-->
-                            <!--                                <a href="dashboard-3.html" class="dropdown-item">Dashboard 3</a>-->
-                            <!--                                <a href="dashboard-4.html" class="dropdown-item">Dashboard 4</a>-->
-                            <!--                            </div>-->
                         </li>
 
                         <li class="nav-item dropdown">

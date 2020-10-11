@@ -43,26 +43,25 @@ class ProductsController extends Controller
 
     public function product()
     {
-        $product = products::paginate(10);
-        return view('Frontend.page.index',compact('product'));
+        $category = categories::all(['id','title']);
+        $product = products::all();
+        return view('Frontend.page.index',compact('product','category'));
     }
 
     public function filter(Request $request)
     {
         $search = $request->get('search');
-        $product = products::where('product_name', 'LIKE', '%'.$search.'%');
+        $product = DB::table('products')->where('product_name', 'LIKE', '%'.$search.'%')->paginate(5);
         return view ('Frontend.page.index', compact('product'));
     }
 
     public function detail($id){
+        $category = categories::all(['id','title']);
+        $brand = brands::all(['id','brand_name']);
+        $size = sizes::all(['id','size_name']);
+        $company = companies::all(['id','company_name','location','phone']);
         $product = DB::table('products')->find($id);
-        return view('Frontend.page.detail',compact('product'));
-
-        $price = $product->price;
-        $discount = $product->discount;
-
-        $total = $price * $discount / 100;
-        $grandTotal = $price - $total;
+        return view('Frontend.page.detail',compact('product','category','brand','size','company'));
     }
 
 
@@ -122,8 +121,11 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = products::find($id);
-        $category = categories::find($id);
-        return view('Backend/manage-promotion/show', compact('product','category'));
+        $category = categories::all(['id','title']);
+        $brand = brands::all(['id','brand_name']);
+        $size = sizes::all(['id','size_name']);
+        $company = companies::all(['id','company_name','location','phone']);
+        return view('Backend/manage-promotion/view', compact('product','category','brand','size','company'));
     }
 
     /**
@@ -160,14 +162,13 @@ class ProductsController extends Controller
             'price' => 'required',
             'discount' => 'required',
             'size' => 'required',
-            'image',
             'company' => 'required',
 
            ]
            );
 
-           $product=products::findOrFail($id);
-           $product->update($request->all());
+        //    $product=products::findOrFail($id);
+        //    $product->update($request->all());
 
         //    if ($request->hasFile('image')) {
         //     if($request->file('image')->isValid()) {
@@ -177,7 +178,8 @@ class ProductsController extends Controller
         //         $product->image = $new_name;
         //     }
         //    }
-            // $product = products::find($id);
+
+            $product = products::find($id);
             $product ->product_name = $request->product_name;
             $product ->category_id = $request->category;
             $product ->brand_id = $request->brand;
@@ -195,7 +197,7 @@ class ProductsController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $product = products::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
+        $product = DB::table('products')->where('id', 'LIKE', '%'.$search.'%')->paginate(5);
         return view ('Backend/manage-promotion/index', compact('product'));
     }
 

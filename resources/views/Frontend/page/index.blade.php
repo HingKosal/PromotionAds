@@ -43,50 +43,52 @@
                     </div> <!-- end col-->
                 </div>
 
+
                 <!-- end row-->
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h2>Clothes</h2>
+                            @foreach ($category as $c)
+                               <h2>{{$c->title}}</h2>
+                                <div class="row">
+                                    @foreach($product as $p)
+                                        @if ($c->id == $p->category_id)
+                                            <div class="col-md-6 col-xl-3">
+                                                <div class="card-box product-box">
+                                                    <div class="bg-light">
+                                                    <a href="{{route('detail', $p->id)}}"><img src="{{asset('storage/image/'.$p->image)}}" alt="product-pic" class="img-fluid"></a>
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="row align-items-center">
+
+                                                            <div class="col">
+                                                                <h5 class="font-16 mt-0 sp-line-1"><a href="{{url('/frontend/detail')}}" class="text-dark">{{$p->product_name}}</a> </h5>
+                                                                <div class="text-warning mb-2 font-13">
+                                                                    <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
+                                                                    <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
+                                                                    <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
+                                                                    <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
+                                                                    <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-auto">
+                                                                <h4 class="text-danger text-uppercase">{{$p->discount}} % Off</h4>
+                                                            </div>
+                                                        </div> <!-- end row -->
+                                                    </div> <!-- end product info-->
+                                                </div> <!-- end card-box-->
+                                            </div> <!-- end col-->
+                                        @endif
+                                    @endforeach
+                                </div> <!-- end row -->
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    @foreach($product as $p)
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card-box product-box">
-                            <div class="bg-light">
-                               <a href="{{route('detail', $p->id)}}"><img src="{{asset('Frontend/assets/images/products/clothes/product-9-1.jpg')}}" alt="product-pic" class="img-fluid"></a>
-                            </div>
-
-                            <div class="product-info">
-                                <div class="row align-items-center">
-
-                                    <div class="col">
-                                        <h5 class="font-16 mt-0 sp-line-1"><a href="{{url('/frontend/detail')}}" class="text-dark">{{$p->product_name}}</a> </h5>
-                                        <div class="text-warning mb-2 font-13">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                            <img src="{{asset('Frontend/assets/images/star.png')}}" alt="product-pic" class="img-fluid">
-                                        </div>
-{{--                                        <h5 class="m-0"> <span class="text-muted"> Stocks : {{$p->price}} pcs</span></h5>--}}
-                                    </div>
-
-                                    <div class="col-auto">
-                                        <h4 class="text-danger text-uppercase">{{$p->discount}} % Off</h4>
-                                    </div>
-                                </div> <!-- end row -->
-                            </div> <!-- end product info-->
-                        </div> <!-- end card-box-->
-                    </div> <!-- end col-->
-                    @endforeach
-                </div>
-                <!-- end row-->
-                <div style="display: flex;justify-content: flex-end">
+                {{-- <div style="display: flex;justify-content: flex-end">
                     {{$product->links()}}
-                </div>
+                </div> --}}
             </div>
         </div>
 

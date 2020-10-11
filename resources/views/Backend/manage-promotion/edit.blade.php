@@ -1,8 +1,5 @@
 @extends('Backend.layout.master')
 @section('content')
-<div>
-    <a href="{{route('product')}}" type="button" class="btn btn-primary"> Back </a>
-</div>
     <section id="horizontal-form-layouts" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-12">

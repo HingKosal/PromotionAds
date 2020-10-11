@@ -7,8 +7,7 @@
     <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
     <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin
-        Dashboard
+    <title>Promotion Ads
     </title>
     <link rel="apple-touch-icon" href="{{asset('backend/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('backend/app-assets/images/ico/favicon.ico')}}">
@@ -42,8 +41,10 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="#">
-                        <img class="brand-logo" alt="modern admin logo" src="{{asset('backend/app-assets/images/logo/logo.png')}}">
+                    <a class="navbar-brand" href="{{url('')}}" style="heigh:100px;">
+                        <span style=" width:200px; height:200px;">
+                        <img class="brand-logo" alt="modern admin logo" src="{{asset('frontend/assets/images/ADS-Logo_RGB.png')}}" alt="logo" width="100%">
+                        </span>
                         <h3 class="brand-text">Promotion Ads</h3>
                     </a>
                 </li>
@@ -71,8 +72,8 @@
             <div class="col-md-4 col-10 box-shadow-2 p-0">
                 <div class="card border-grey border-lighten-3 m-0">
                     <div class="card-header border-0 pb-0">
-                        <div class="card-title text-center">
-                            <img src="{{asset('backend/app-assets/images/logo/logo-dark.png')}}" alt="branding logo">
+                        <div class="card-title text-center" style="width: 100px; align-item:center; margin-left:40%; margin-right:60%">
+                            <img src="{{asset('frontend/assets/images/ADS-Logo_RGB.png')}}" style="width: 100%;" alt="branding logo">
                         </div>
                         <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
                             <span>Please Sign Up</span>
