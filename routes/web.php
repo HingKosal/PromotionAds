@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('', 'ProductsController@product');
 Route::get('/filter', 'ProductsController@filter')->name('filter');
 Route::get('/detail{id}', 'ProductsController@detail')->name('detail');
-Route::get('/frontend/about', function () {
-    return view('Frontend.page.about');
-});
+Route::get('/frontend/about','ContactsController@about')->name('about');
+
+Route::get('/header', 'ContactsController@header')->name('header');
+Route::get('/header/category{id}', 'ContactsController@category')->name('header.category');
+Route::get('/header/filter', 'ContactsController@filter')->name('header.filter');
 
 // Contact
 Route::get('/contact', 'ContactsController@index')->name('contact');

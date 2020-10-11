@@ -15,7 +15,6 @@
     <!-- Plugins css -->
     <link href="{{asset('frontend/assets/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('frontend/assets/libs/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet" type="text/css" />
-
     <!-- App css -->
     <link href="{{asset('frontend/assets/css/bootstrap-creative.min.css')}}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
     <link href="{{asset('frontend/assets/css/app-creative.min.css')}}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -67,7 +66,7 @@
 <div class="rightbar-overlay"></div>
 
 <!-- Vendor js -->
-<script src="{{asset('Frontend/assets/js/vendor.min.js')}}"></script>
+<script src="{{asset('Frontend/app-assets/js/vendor.min.js')}}"></script>
 
 <!-- Plugins js-->
 <script src="{{asset('Frontend/assets/libs/flatpickr/flatpickr.min.js')}}"></script>
@@ -80,6 +79,23 @@
 
 <!-- App js-->
 <script src="{{asset('Frontend/assets/js/app.min.js')}}"></script>
+
+{{-- <!-- BEGIN VENDOR JS-->
+<script src="{{asset(app-assets/vendors/js/vendors.min.js)}}"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<!--<script src="../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"-->
+<!--        type="text/javascript"></script>-->
+<script src="{{asset(app-assets/vendors/js/forms/icheck/icheck.min.js)}}"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN MODERN JS-->
+<script src="{{asset(app-assets/js/core/app-menu.js)}}"></script>
+<script src="{{asset(app-assets/js/core/app.js)}}"></script>
+<script src="{{asset(app-assets/js/scripts/customizer.js)}}"></script>
+<!-- END MODERN JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script src="{{asset(app-assets/js/scripts/forms/form-login-register.js)}}"></script>
+<!-- END PAGE LEVEL JS--> --}}
 
 </body>
 

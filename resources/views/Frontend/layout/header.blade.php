@@ -1,6 +1,7 @@
 <div class="navbar-custom">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
+
             <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-search noti-icon"></i>
@@ -11,6 +12,7 @@
                     </form>
                 </div>
             </li>
+
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{asset('frontend/assets/images/flags/khmer.png')}}" alt="user-image" height="30">
@@ -29,8 +31,8 @@
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a href="{{route('register')}}" class="btn btn-outline-warning btn-rounded waves-effect waves-light" style="margin: 15px">Free Ads Post</a>
             </li>
-        </ul>
 
+        </ul>
 
         <!-- LOGO -->
         <div class="logo-box">
@@ -62,65 +64,44 @@
                 <!-- End mobile menu toggle-->
             </li>
 
-        </ul>
-        <div class="container-fluid">
-            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-                <div class="collapse navbar-collapse active" id="topnav-menu-content">
-                    <ul class="navbar-nav active">
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle arrow-none" href="{{url('')}}" style="font-size: 20px; margin-top: -10px; color: white">
-                                Home
-                            </a>
-                        </li>
+            <div class="container-fluid">
+                <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                    <div class="collapse navbar-collapse active" id="topnav-menu-content">
+                        <ul class="navbar-nav active">
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{url('')}}" style="font-size: 20px; margin-top: -10px; color: white">
+                                    Home
+                                </a>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px; margin-top: -10px;color: white">
-                                All Categories <div class="arrow-down"></div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                                <div class="dropdown">
-                                    <a class="dropdown-item active" href="../templates/clothes.php">
-                                        Clothes </a>
-                                    <!--                                    <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">-->
-                                    <!--                                        <a href="#" class="dropdown-item active">Dashboard Clothes</a>-->
-                                    <!--                                        <a href="../templates/clothes.php" class="dropdown-item active">Products</a>-->
-                                    <!--                                        <a href="#" class="dropdown-item active">Checkout</a>-->
-                                    <!--                                    </div>-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px; margin-top: -10px;color: white">
+                                    All Categories <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <div class="dropdown">
+                                        @foreach ($category as $c)
+                                        <a class="dropdown-item active" href ="{{route('header.category', $c->id)}}">
+                                            {{$c->title}}
+                                        </a>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="dropdown">
-                                    <a class="dropdown-item active" href="../templates/shoes.php">
-                                        Shoes </a>
-                                    <!--                                    <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">-->
-                                    <!--                                        <a href="#" class="dropdown-item active">Dashboard Shoes</a>-->
-                                    <!--                                        <a href="../templates/clothes.php" class="dropdown-item active">Products</a>-->
-                                    <!--                                        <a href="#" class="dropdown-item active">Checkout</a>-->
-                                    <!--                                    </div>-->
-                                </div>
-                                <div class="dropdown">
-                                    <a class="dropdown-item active" href="../templates/accessories.php">
-                                        Accessories </a>
-                                    <!--                                    <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">-->
-                                    <!--                                        <a href="#" class="dropdown-item active">Dashboard Accessorires</a>-->
-                                    <!--                                        <a href="../templates/clothes.php" class="dropdown-item active">Products</a>-->
-                                    <!--                                        <a href="#" class="dropdown-item active">Checkout</a>-->
-                                    <!--                                    </div>-->
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle arrow-none" href="{{url('/frontend/about')}}" style="font-size: 20px; margin-top: -10px; color: white">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle arrow-none" href="{{route('contact')}}" style="font-size: 20px; margin-top: -10px; color: white">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+                            </li>
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{url('/frontend/about')}}" style="font-size: 20px; margin-top: -10px; color: white">
+                                    About
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('contact')}}" style="font-size: 20px; margin-top: -10px; color: white">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         <div class="clearfix"></div>
     </div>
 </div>
