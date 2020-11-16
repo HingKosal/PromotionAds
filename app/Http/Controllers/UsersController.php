@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Export;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class UsersController extends Controller
 {
@@ -19,6 +22,17 @@ class UsersController extends Controller
         return view('Backend/manage-user/index',compact('user'));
     }
 
+    public function createPDF(Request $request){
+        $searchId = $request->search_id;
+        $user= User::whereIn('id',$searchId)->paginate(5);
+        $pdf = PDF::loadView('Backend/manage-user/pdf', compact('user'));
+        return $pdf->download('user.pdf');
+    }
+
+    public function export(Request $request){
+
+        return Excel::download(new Export($request->excel), 'Users.xlsx');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -62,6 +76,21 @@ class UsersController extends Controller
         $search = $request->get('search');
         $user = User::where('username', 'LIKE', '%'.$search.'%')->paginate(5);
         return view ('Backend/manage-user/index', compact('user'));
+
+    }
+
+    public function filter(Request $request)
+    {
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+
+        if (empty($from_date)){
+            $user = User::paginate(5);
+        }elseif (!empty($from_date)) {
+            $user = User::whereBetween('created_at',[$from_date,$to_date])->paginate(5);
+        }
+        return view ('Backend/manage-user/index', compact('user'));
+
     }
 
     /**

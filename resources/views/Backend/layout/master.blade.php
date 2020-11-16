@@ -25,8 +25,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/css/core/colors/palette-gradient.css')}}">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
+
     <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/css/style.css')}}">
+
     <!-- END Custom CSS-->
+    @yield('style')
+
 </head>
 <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
       data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -61,10 +65,12 @@
 <!-- BEGIN MODERN JS-->
 <script src="{{asset('backend/app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/core/app.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('backend/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>--}}
 <!-- END MODERN JS-->
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{asset('backend/app-assets/js/scripts/extensions/block-ui.js')}}" type="text/javascript"></script>
+
+@yield('scripts')
 <!-- END PAGE LEVEL JS-->
 </body>
 </html>

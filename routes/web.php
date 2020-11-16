@@ -97,7 +97,10 @@ Route::get('/user/edit{id}','UsersController@edit')->name('user.edit');
 Route::get('/user/update{id}','UsersController@update')->name('user.update');
 Route::get('/user/delete{id}','UsersController@destroy')->name('user.delete');
 Route::get('/user/view{id}','UsersController@show')->name('user.view');
-Route::get('/user/search', 'UsersController@search')->name('user.search');
+Route::post('/user/search', 'UsersController@search')->name('user.search');
+Route::post('/user/filter', 'UsersController@filter')->name('user.filter');
+Route::post('/user/pdf', 'UsersController@createPDF')->name('user.pdf');
+Route::post('/user/excel', 'UsersController@export')->name('user.excel');
 
 
 
