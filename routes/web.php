@@ -100,8 +100,10 @@ Route::get('/user/view{id}','UsersController@show')->name('user.view');
 Route::post('/user/search', 'UsersController@search')->name('user.search');
 Route::post('/user/filter', 'UsersController@filter')->name('user.filter');
 Route::post('/user/pdf', 'UsersController@createPDF')->name('user.pdf');
-Route::post('/user/excel', 'UsersController@export')->name('user.excel');
-
+Route::post('/user/excel/{id?}', 'UsersController@export')->name('user.excel');
+Route::post('excel/{name?}', 'UsersController@excel')->name('excel');
+Route::post('excel/exportPDF', 'UsersController@exportPDF')->name('user.exportPDF');
+Route::post('exportExcel', 'UsersController@exportExcel')->name('user.export');
 
 
 Auth::routes();

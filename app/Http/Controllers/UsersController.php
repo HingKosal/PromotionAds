@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Exports\Export;
+use App\Exports\UserMultiSheetExport;
+use App\Exports\UsersExportEmail;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -18,21 +21,34 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::paginate(5);
+        $user = DB::table('users')->paginate(5);
         return view('Backend/manage-user/index',compact('user'));
     }
 
     public function createPDF(Request $request){
         $searchId = $request->search_id;
-        $user= User::whereIn('id',$searchId)->paginate(5);
+        $user = DB::table('users')->whereIn('id', $searchId)->paginate(5);
+        $pdf = PDF::loadView('Backend/manage-user/pdf', compact('user'));
+        return $pdf->download('user.pdf');
+    }
+
+    public function pdf()
+    {
+        $user = DB::table('users')->get();
         $pdf = PDF::loadView('Backend/manage-user/pdf', compact('user'));
         return $pdf->download('user.pdf');
     }
 
     public function export(Request $request){
-
-        return Excel::download(new Export($request->excel), 'Users.xlsx');
+        $excel_id = $request->excel;
+        return Excel::download(new Export($excel_id), 'Users.xlsx');
     }
+
+    public function exportExcel(){
+        return Excel::download(new UserMultiSheetExport(), 'UserByCheckbox.xlsx');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -85,9 +101,9 @@ class UsersController extends Controller
         $to_date = $request->to_date;
 
         if (empty($from_date)){
-            $user = User::paginate(5);
+            $user = DB::table('users')->paginate(10);
         }elseif (!empty($from_date)) {
-            $user = User::whereBetween('created_at',[$from_date,$to_date])->paginate(5);
+            $user = DB::table('users')->whereBetween('created_at',[$from_date,$to_date])->paginate(10);
         }
         return view ('Backend/manage-user/index', compact('user'));
 
