@@ -33,12 +33,10 @@ class UsersExportEmail implements FromView
         $user = DB::table('users');
 
         if($fname && $check_fname){
-            $users1 = $user->select('first_name')->get();
-            return view('Backend.manage-user.excelCheckbox', compact('users1'));
+            $user1 = $user->select('id','first_name')->get();
         }
         if($lname && $check_lname){
-            $users2 = $user->select('last_name')->get();
-            return view('Backend.manage-user.excelCheckbox', compact('users2'));
+            $user1 = $user->select('last_name')->get();
         }
         if($username){
             $user1 =  $user->select('username');
@@ -80,8 +78,8 @@ class UsersExportEmail implements FromView
             $user1 = $user->select('first_name','last_name','username','email');
         }
 
-//        $users = $user->get();
-//        return view('Backend.manage-user.excelCheckbox', compact('users'));
+        $users = $user1->get();
+        return view('Backend.manage-user.excelCheckbox', compact('users'));
 
     }
 

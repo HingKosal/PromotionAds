@@ -26,7 +26,7 @@ use Yajra\DataTables\DataTables;
 //});
 
 
-class UserMultiSheetExport implements FromCollection, WithMapping, WithHeadings, ShouldAutoSize, WithTitle
+class UserMultiSheetExport implements FromCollection, WithMapping, WithHeadings, ShouldAutoSize, WithTitle,WithEvents
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -169,7 +169,7 @@ class UserMultiSheetExport implements FromCollection, WithMapping, WithHeadings,
 
         if (($fname && $check_fname) && ($lname && $check_lname) && ($username && $check_username) && ($email && $check_email)) {
             return [
-                'ID' => '',
+                'ID',
                 'First Name',
                 'Last Name',
                 'Username',

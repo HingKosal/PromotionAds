@@ -1,7 +1,7 @@
 @section('style')
     <link rel="stylesheet" href="{{asset('jquery.datetimepicker.min.css')}}">
     <link href="{{asset('backend/skins/square/blue.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <style>
         .multiselect {
             width: 200px;
